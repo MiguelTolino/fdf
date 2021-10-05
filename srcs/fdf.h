@@ -6,7 +6,12 @@
 /*   By: mmateo-t <mmateo-t@student.42madrid>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/04 13:27:07 by mmateo-t          #+#    #+#             */
-/*   Updated: 2021/10/04 13:27:08 by mmateo-t         ###   ########.fr       */
+/*   Updated: 2021/10/05 11:35:48 by mmateo-t         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+#include <mlx.h>
+#include <stdlib.h>
+#include <stdio.h>
+#include <unistd.h>
 
