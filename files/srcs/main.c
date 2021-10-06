@@ -1,30 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   fdf.h                                              :+:      :+:    :+:   */
+/*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mmateo-t <mmateo-t@student.42madrid>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/10/04 13:27:07 by mmateo-t          #+#    #+#             */
-/*   Updated: 2021/10/05 12:48:25 by mmateo-t         ###   ########.fr       */
+/*   Created: 2021/10/04 13:26:53 by mmateo-t          #+#    #+#             */
+/*   Updated: 2021/10/06 13:52:02 by mmateo-t         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <mlx.h>
-#include <stdlib.h>
-#include <stdio.h>
-#include <unistd.h>
-#include "lib/libft/libft.h"
+#include "fdf.h"
 
-
-#define EXT ".fdf"
-
-typedef struct map
+int main(int argc, char *argv[])
 {
-	int **map;
-	int x;
-	int y;
-} map;
+	s_map map;
+	s_mlx mlx;
 
-
-void check_errors(int argc, char **argv);
+	check_errors(argc, argv);
+	map = parse_map(argv[1]);
+	mlx = create_window();
+	display_img(&mlx);
+	hooks_loop(mlx);
+	return (0);
+}

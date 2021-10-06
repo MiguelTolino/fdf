@@ -1,39 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   errors.c                                           :+:      :+:    :+:   */
+/*   dfree.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mmateo-t <mmateo-t@student.42madrid>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/10/05 12:28:37 by mmateo-t          #+#    #+#             */
-/*   Updated: 2021/10/05 13:02:56 by mmateo-t         ###   ########.fr       */
+/*   Created: 2021/09/06 13:59:06 by mmateo-t          #+#    #+#             */
+/*   Updated: 2021/10/06 00:20:41 by mmateo-t         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 
-void map_exists(int argc, char **argv)
+int dfree(char **array)
 {
-	if (argc != 2 || argv[1] == NULL)
+	int i;
+
+	if (!array)
+		return(-1);
+	i = 0;
+	while (array[i])
 	{
-		perror("No map was detected");
-		exit(1);
+		free(array[i]);
+		i++;
 	}
-}
-
-void check_extension(char **argv)
-{
-	char *extension;
-
-	if (!(extension = ft_strchr(argv[1], '.')) || strcmp(extension, EXT))
-	{
-		perror("No map extension '.fdf' was detected");
-		exit(1);
-	}
-}
-
-void check_errors(int argc, char **argv)
-{
-	map_exists(argc, argv);
-	check_extension(argv);
+	free(array);
+	return (0);
 }

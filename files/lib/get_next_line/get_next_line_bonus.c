@@ -6,7 +6,7 @@
 /*   By: mmateo-t <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/02 13:46:30 by mmateo-t          #+#    #+#             */
-/*   Updated: 2019/12/09 20:30:07 by mmateo-t         ###   ########.fr       */
+/*   Updated: 2021/10/05 18:16:14 by mmateo-t         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,14 +22,14 @@ int			new_line(char **s, char **line)
 		len++;
 	if ((*s)[len] == '\n')
 	{
-		*line = ft_substr(*s, 0, len);
-		aux = ft_strdup(&((*s)[len + 1]));
+		*line = ft_substr_gnl(*s, 0, len);
+		aux = ft_strdup_gnl(&((*s)[len + 1]));
 		free(*s);
 		*s = aux;
 	}
 	else
 	{
-		*line = ft_strdup(*s);
+		*line = ft_strdup_gnl(*s);
 		free(*s);
 		*s = NULL;
 		return (0);
@@ -41,9 +41,9 @@ int			return_value(int fd, int n_bytes, char **s, char **line)
 {
 	if (n_bytes < 0)
 		return (-1);
-	else if (n_bytes == 0 && s[fd] == '\0')
+	else if (n_bytes == 0 && s[fd] == NULL)
 	{
-		*line = ft_strdup("");
+		*line = ft_strdup_gnl("");
 		return (0);
 	}
 	else
@@ -63,14 +63,14 @@ int			get_next_line(int fd, char **line)
 	{
 		buff[n_bytes] = '\0';
 		if (s[fd] == NULL)
-			s[fd] = ft_strdup(buff);
+			s[fd] = ft_strdup_gnl(buff);
 		else
 		{
-			aux = ft_strjoin(s[fd], buff);
+			aux = ft_strjoin_gnl(s[fd], buff);
 			free(s[fd]);
 			s[fd] = aux;
 		}
-		if (ft_strchr(s[fd], '\n'))
+		if (ft_strchr_gnl(s[fd], '\n'))
 			break ;
 	}
 	return (return_value(fd, n_bytes, s, line));

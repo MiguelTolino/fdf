@@ -6,13 +6,13 @@
 /*   By: mmateo-t <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/02 13:47:10 by mmateo-t          #+#    #+#             */
-/*   Updated: 2019/12/09 20:30:48 by mmateo-t         ###   ########.fr       */
+/*   Updated: 2021/10/05 18:11:51 by mmateo-t         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line_bonus.h"
 
-size_t		ft_strlen(char *str)
+size_t		ft_strlen_gnl(char *str)
 {
 	int i;
 
@@ -24,13 +24,13 @@ size_t		ft_strlen(char *str)
 	return (i);
 }
 
-char		*ft_strdup(char *s1)
+char		*ft_strdup_gnl(char *s1)
 {
 	char	*s2;
 	int		i;
 	int		size;
 
-	size = ft_strlen(s1);
+	size = ft_strlen_gnl(s1);
 	i = 0;
 	s2 = (char*)malloc(sizeof(char) * size + 1);
 	if (s2 == NULL)
@@ -45,7 +45,7 @@ char		*ft_strdup(char *s1)
 	return (s2);
 }
 
-char		*ft_substr(char *s, unsigned int start, size_t len)
+char		*ft_substr_gnl(char *s, unsigned int start, size_t len)
 {
 	size_t	i;
 	char	*substr;
@@ -55,8 +55,8 @@ char		*ft_substr(char *s, unsigned int start, size_t len)
 	{
 		return (NULL);
 	}
-	if (ft_strlen(s) < start)
-		return (ft_strdup(""));
+	if (ft_strlen_gnl(s) < start)
+		return (ft_strdup_gnl(""));
 	substr = (char*)malloc(sizeof(char) * (len + 1));
 	if (substr == NULL)
 		return (substr);
@@ -69,7 +69,7 @@ char		*ft_substr(char *s, unsigned int start, size_t len)
 	return (substr);
 }
 
-char		*ft_strchr(char *s, int c)
+char		*ft_strchr_gnl(char *s, int c)
 {
 	while (*s)
 	{
@@ -86,7 +86,7 @@ char		*ft_strchr(char *s, int c)
 	return (NULL);
 }
 
-char		*ft_strjoin(char *s1, char *s2)
+char		*ft_strjoin_gnl(char *s1, char *s2)
 {
 	int		i;
 	int		j;
@@ -94,8 +94,8 @@ char		*ft_strjoin(char *s1, char *s2)
 
 	if (!s1 || !s2)
 		return (NULL);
-	i = ft_strlen(s1);
-	j = ft_strlen(s2);
+	i = ft_strlen_gnl(s1);
+	j = ft_strlen_gnl(s2);
 	strjoin = (char*)malloc(sizeof(char) * (i + j + 1));
 	if (strjoin == NULL)
 		return (strjoin);

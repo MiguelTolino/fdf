@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line.h                                    :+:      :+:    :+:   */
+/*   get_next_line_bonus.h                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mmateo-t <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/03 14:05:15 by mmateo-t          #+#    #+#             */
-/*   Updated: 2019/12/09 20:32:18 by mmateo-t         ###   ########.fr       */
+/*   Updated: 2021/10/05 18:08:54 by mmateo-t         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,11 +23,11 @@
 # include <unistd.h>
 # include <string.h>
 
-size_t	ft_strlen(char *str);
-char	*ft_strdup(char *s1);
-char	*ft_substr(char *s, unsigned int start, size_t len);
-char	*ft_strchr(char *s, int c);
-char	*ft_strjoin(char *s1, char *s2);
+size_t	ft_strlen_gnl(char *str);
+char	*ft_strdup_gnl(char *s1);
+char	*ft_substr_gnl(char *s, unsigned int start, size_t len);
+char	*ft_strchr_gnl(char *s, int c);
+char	*ft_strjoin_gnl(char *s1, char *s2);
 int		get_next_line(int fd, char **line);
 
 #endif
