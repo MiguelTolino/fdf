@@ -6,7 +6,7 @@
 /*   By: mmateo-t <mmateo-t@student.42madrid>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/04 13:27:07 by mmateo-t          #+#    #+#             */
-/*   Updated: 2021/10/06 14:00:32 by mmateo-t         ###   ########.fr       */
+/*   Updated: 2021/10/07 09:58:30 by mmateo-t         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 
 #include <mlx.h>
 #include <stdlib.h>
-//#include <stdio.h>
+#include <stdio.h>
 #include <unistd.h>
 #include <stdlib.h>
 #include <fcntl.h>
@@ -61,7 +61,7 @@ typedef struct s_mlx
 
 
 void check_errors(int argc, char **argv);
-s_map parse_map(char *argv);
+s_map parse_map(char *filename);
 int	throw_error(char *error);
 int	ft_getnbr(char *str);
 int dfree(char **array);

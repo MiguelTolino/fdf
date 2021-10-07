@@ -6,7 +6,7 @@
 /*   By: mmateo-t <mmateo-t@student.42madrid>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/05 12:28:37 by mmateo-t          #+#    #+#             */
-/*   Updated: 2021/10/05 18:22:12 by mmateo-t         ###   ########.fr       */
+/*   Updated: 2021/10/06 18:49:54 by mmateo-t         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 int		throw_error(char *error)
 {
 	perror(error);
-	exit(1);
+	exit(EXIT_FAILURE);
 	return (0);
 }
 

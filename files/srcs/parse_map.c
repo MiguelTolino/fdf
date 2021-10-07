@@ -6,7 +6,7 @@
 /*   By: mmateo-t <mmateo-t@student.42madrid>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/05 17:25:14 by mmateo-t          #+#    #+#             */
-/*   Updated: 2021/10/06 12:37:36 by mmateo-t         ###   ########.fr       */
+/*   Updated: 2021/10/07 10:39:58 by mmateo-t         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,26 +33,25 @@ int open_map(char *map_name)
 {
 	int fd;
 
-	fd = open(map_name, O_RDONLY);
+	fd = open(map_name, O_RDONLY, 0);
 	if (fd < 0)
 		throw_error("Map could not be opened");
 	return (fd);
 }
 
-int *convertoint(s_map *map)
+int *convertoint(s_map *map, int x)
 {
 	int i;
-	int *strint;
+	int *array;
 
 	i = 0;
-	map->y[map->x] = array_length(map->buffer);
-	strint = (int *)malloc(sizeof(int) * map->y[map->x]);
-	while (i < map->y[map->x])
+	array = (int *)malloc(sizeof(int) * map->y[x]);
+	while (i < map->y[x])
 	{
-		strint[i] = ft_getnbr(map->buffer[i]);
+		array[i] = ft_getnbr(map->buffer[i]);
 		i++;
 	}
-	return (strint);
+	return (array);
 }
 
 /*
@@ -65,20 +64,72 @@ Steps:
 4ºfree char*
 */
 
-s_map parse_map(char *argv)
+int get_x(char *filename)
+{
+	int x;
+	int fd;
+	char *line;
+
+	x = 0;
+	fd = open_map(filename);
+	while (get_next_line(fd, &line))
+	{
+		x++;
+		free(line);
+	}
+	close(fd);
+	free(line);
+	return (x);
+}
+
+int *get_y(char *filename, int x)
+{
+	int *width;
+	int fd;
+	char *line;
+	char **buffer;
+	int i;
+
+	i = 0;
+	fd = open_map(filename);
+	width = (int*)malloc(sizeof(int) * x);
+	while (get_next_line(fd, &line))
+	{
+		buffer = ft_split(line, ' ');
+		width[i++] = array_length(buffer);
+		free(line);
+		dfree(buffer);
+	}
+	free(line);
+	close(fd);
+	return (width);
+}
+
+s_map parse_map(char *filename)
 {
 	s_map map;
+	int i;
 
-	map.map = (int **)malloc(sizeof(int *) * 50); //FIXME:Hacer la reserva de memoria dinamica
-	map.fd = open_map(argv);
-	map.y = (int *)malloc(sizeof(int) * 50);
-	map.x = 0;
+	i = 0;
+	map.x = get_x(filename);
+	map.y = get_y(filename, map.x);
+	map.fd = open_map(filename);
+	map.map = (int **)malloc(sizeof(int *) * map.x);
+	i = 0;
+	while (i < map.x)
+	{
+		map.map[i] = (int *)malloc(sizeof(int) * map.y[i]);
+		i++;
+	}
+	i = 0;
 	while ((get_next_line(map.fd, &map.line)) > 0)
 	{
 		map.buffer = ft_split(map.line, ' ');
-		map.map[map.x] = convertoint(&map);
-		map.x++;
+		map.map[i] = convertoint(&map, i);
+		i++;
 		dfree(map.buffer);
+		free(map.line);
 	}
 	test(map);
+	return(map);
 }
