@@ -6,7 +6,7 @@
 /*   By: mmateo-t <mmateo-t@student.42madrid>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/04 13:27:07 by mmateo-t          #+#    #+#             */
-/*   Updated: 2021/10/07 09:58:30 by mmateo-t         ###   ########.fr       */
+/*   Updated: 2021/10/08 11:47:47 by mmateo-t         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 # define FDF_H
 
 #include <mlx.h>
+#include <math.h>
 #include <stdlib.h>
 #include <stdio.h>
 #include <unistd.h>
@@ -69,5 +70,7 @@ int array_length(char **array);
 s_mlx create_window();
 void display_img(s_mlx *mlx);
 void hooks_loop(s_mlx mlx);
+void putpixel(int x, int y);
+void bresenham(int x0, int y0, int x1, int y1);
 
 #endif

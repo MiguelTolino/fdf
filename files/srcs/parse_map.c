@@ -6,7 +6,7 @@
 /*   By: mmateo-t <mmateo-t@student.42madrid>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/05 17:25:14 by mmateo-t          #+#    #+#             */
-/*   Updated: 2021/10/07 10:39:58 by mmateo-t         ###   ########.fr       */
+/*   Updated: 2021/10/07 12:23:21 by mmateo-t         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ void test(s_map map)
 		j = 0;
 		while (j < map.y[i])
 		{
-			printf("%i ", map.map[i][j]);
+			printf("%3i ", map.map[i][j]);
 			j++;
 		}
 		printf("\n");
