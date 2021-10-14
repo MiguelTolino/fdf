@@ -6,7 +6,7 @@
 /*   By: mmateo-t <mmateo-t@student.42madrid>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/05 17:25:14 by mmateo-t          #+#    #+#             */
-/*   Updated: 2021/10/07 12:23:21 by mmateo-t         ###   ########.fr       */
+/*   Updated: 2021/10/14 14:44:05 by mmateo-t         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ int open_map(char *map_name)
 	int fd;
 
 	fd = open(map_name, O_RDONLY, 0);
-	if (fd < 0)
+	if (fd <= 0)
 		throw_error("Map could not be opened");
 	return (fd);
 }
@@ -53,16 +53,6 @@ int *convertoint(s_map *map, int x)
 	}
 	return (array);
 }
-
-/*
-TODO:Guardar mapa como un doble array de enteros
-Steps:
-1ºSplit line in individual string of chars
-2ºCreate int* with the appropiate size=y=nºcolumns -> Solution: Calculate the length of the array and alloc heap memory
-	2.b: Save nºcolumns into an array
-3ºConvert chars into integers
-4ºfree char*
-*/
 
 int get_x(char *filename)
 {
@@ -92,7 +82,7 @@ int *get_y(char *filename, int x)
 
 	i = 0;
 	fd = open_map(filename);
-	width = (int*)malloc(sizeof(int) * x);
+	width = (int*)calloc(sizeof(int) , x);
 	while (get_next_line(fd, &line))
 	{
 		buffer = ft_split(line, ' ');
@@ -115,7 +105,6 @@ s_map parse_map(char *filename)
 	map.y = get_y(filename, map.x);
 	map.fd = open_map(filename);
 	map.map = (int **)malloc(sizeof(int *) * map.x);
-	i = 0;
 	while (i < map.x)
 	{
 		map.map[i] = (int *)malloc(sizeof(int) * map.y[i]);

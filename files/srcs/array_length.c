@@ -6,11 +6,11 @@
 /*   By: mmateo-t <mmateo-t@student.42madrid>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/06 10:53:23 by mmateo-t          #+#    #+#             */
-/*   Updated: 2021/10/07 10:03:19 by mmateo-t         ###   ########.fr       */
+/*   Updated: 2021/10/14 14:33:00 by mmateo-t         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int array_length(char **array)
+int array_length(void **array)
 {
 	int i;
 
