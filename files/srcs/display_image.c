@@ -6,7 +6,7 @@
 /*   By: mmateo-t <mmateo-t@student.42madrid>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/06 13:05:56 by mmateo-t          #+#    #+#             */
-/*   Updated: 2021/10/14 14:46:38 by mmateo-t         ###   ########.fr       */
+/*   Updated: 2021/10/15 11:10:58 by mmateo-t         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,5 +48,5 @@ void display_img(s_mlx *mlx, s_map map)
 		}
 		y++;
 	}
-	mlx_put_image_to_window(mlx->ptr, mlx->win, mlx->img.ptr, SIZE_X / 3, SIZE_Y / 3);
+	mlx_put_image_to_window(mlx->ptr, mlx->win, mlx->img.ptr, SIZE_X / 4, SIZE_Y / 4);
 }

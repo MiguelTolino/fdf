@@ -6,7 +6,7 @@
 #    By: mmateo-t <mmateo-t@student.42madrid>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/06/24 16:04:19 by user42            #+#    #+#              #
-#    Updated: 2021/10/06 11:59:47 by mmateo-t         ###   ########.fr        #
+#    Updated: 2021/10/15 11:22:06 by mmateo-t         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -51,6 +51,7 @@ clean:
 		$(RM) $(OBJS)
 fclean:
 		make clean
+		cd files/lib/libft && $(MAKE) fclean
 		$(RM) $(NAME)
 msg:
 
