@@ -6,7 +6,7 @@
 /*   By: mmateo-t <mmateo-t@student.42madrid>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/06 10:53:23 by mmateo-t          #+#    #+#             */
-/*   Updated: 2021/10/14 14:33:00 by mmateo-t         ###   ########.fr       */
+/*   Updated: 2021/10/17 18:30:12 by mmateo-t         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,10 +17,7 @@ int array_length(void **array)
 	i = 0;
 	if (!array)
 		return (-1);
-	while (*array)
-	{
+	while (array[i])
 		i++;
-		array++;
-	}
 	return(i);
 }

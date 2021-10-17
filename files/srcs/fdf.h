@@ -6,7 +6,7 @@
 /*   By: mmateo-t <mmateo-t@student.42madrid>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/04 13:27:07 by mmateo-t          #+#    #+#             */
-/*   Updated: 2021/10/14 13:46:15 by mmateo-t         ###   ########.fr       */
+/*   Updated: 2021/10/17 19:33:25 by mmateo-t         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@
 #define SIZE_Y 1000
 #define TITLE "FDF"
 #define ZOOM 20
-#define POSITION 10
+#define POSITION 0
 #define MAX(a,b) (a > b? a : b)
 #define MOD(a) (a < 0 ? -a : a)
 
@@ -41,6 +41,8 @@
 #define GREEN 0x00ff00
 #define WHITE 0xffffff
 #define YELLOW 0xffff00
+#define PURPLE 0xff00ff
+#define AQUAMARINA 0x00ffff
 
 typedef struct s_step
 {

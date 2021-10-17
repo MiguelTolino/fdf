@@ -6,7 +6,7 @@
 /*   By: mmateo-t <mmateo-t@student.42madrid>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/06 13:05:56 by mmateo-t          #+#    #+#             */
-/*   Updated: 2021/10/15 11:10:58 by mmateo-t         ###   ########.fr       */
+/*   Updated: 2021/10/17 19:22:59 by mmateo-t         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,10 +19,16 @@ unsigned int	set_color(int x, int y, s_map map)
 	z = map.map[y][x];
 	if (!z)
 		return (WHITE);
-	else if (z > 0 && z <= 10)
+	else if (z <= 10)
 		return (RED);
-	else if (z < 0)
+	else if (z < 0 && z >= -20)
 		return (BLUE);
+	else if (z < -20)
+		return (GREEN);
+	else if (z > 10 && z < 20)
+		return (PURPLE);
+	else if (z > 20)
+		return (AQUAMARINA);
 	else
 		return (YELLOW);
 }

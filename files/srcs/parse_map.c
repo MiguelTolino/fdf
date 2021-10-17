@@ -6,7 +6,7 @@
 /*   By: mmateo-t <mmateo-t@student.42madrid>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/05 17:25:14 by mmateo-t          #+#    #+#             */
-/*   Updated: 2021/10/14 14:44:05 by mmateo-t         ###   ########.fr       */
+/*   Updated: 2021/10/17 18:36:17 by mmateo-t         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ int *convertoint(s_map *map, int x)
 	array = (int *)malloc(sizeof(int) * map->y[x]);
 	while (i < map->y[x])
 	{
-		array[i] = ft_getnbr(map->buffer[i]);
+		array[i] = ft_atoi(map->buffer[i]);
 		i++;
 	}
 	return (array);
@@ -86,7 +86,8 @@ int *get_y(char *filename, int x)
 	while (get_next_line(fd, &line))
 	{
 		buffer = ft_split(line, ' ');
-		width[i++] = array_length(buffer);
+		width[i] = array_length(buffer);
+		i++;
 		free(line);
 		dfree(buffer);
 	}
@@ -119,6 +120,7 @@ s_map parse_map(char *filename)
 		dfree(map.buffer);
 		free(map.line);
 	}
+	free(map.line);
 	test(map);
 	return(map);
 }
