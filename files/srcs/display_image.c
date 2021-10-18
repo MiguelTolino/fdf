@@ -6,7 +6,7 @@
 /*   By: mmateo-t <mmateo-t@student.42madrid>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/06 13:05:56 by mmateo-t          #+#    #+#             */
-/*   Updated: 2021/10/17 19:22:59 by mmateo-t         ###   ########.fr       */
+/*   Updated: 2021/10/18 12:45:57 by mmateo-t         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,25 +34,25 @@ unsigned int	set_color(int x, int y, s_map map)
 }
 
 
-void display_img(s_mlx *mlx, s_map map)
+void display_img(fdf *data)
 {
-	int x;
 	int y;
+	int x;
 
 	y = 0;
-	while (y < map.x)
+	while (y < data->map.height)
 	{
 		x = 0;
-		while (x < map.y[y])
+		while (x < data->map.width)
 		{
-			mlx->color = set_color(x, y, map);
-			if (x < map.y[y] - 1)
-				bresenham(x, y, x + 1, y, mlx, map);
-			if (y < map.x - 1)
-				bresenham(x, y, x, y + 1, mlx, map);
+			data->mlx.color = set_color(x, y, data->map);
+			if (x < data->map.width - 1)
+				bresenham(x, y, x + 1, y, data);
+			if (y < data->map.height - 1)
+				bresenham(x, y, x, y + 1, data);
 			x++;
 		}
 		y++;
 	}
-	mlx_put_image_to_window(mlx->ptr, mlx->win, mlx->img.ptr, SIZE_X / 4, SIZE_Y / 4);
+	//mlx_put_image_to_window(data->mlx.ptr, data->mlx.win, data->mlx.img.ptr, 0, 0);
 }

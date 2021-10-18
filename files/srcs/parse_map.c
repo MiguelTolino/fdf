@@ -6,7 +6,7 @@
 /*   By: mmateo-t <mmateo-t@student.42madrid>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/05 17:25:14 by mmateo-t          #+#    #+#             */
-/*   Updated: 2021/10/17 18:36:17 by mmateo-t         ###   ########.fr       */
+/*   Updated: 2021/10/18 12:40:36 by mmateo-t         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,10 +16,10 @@ void test(s_map map)
 {
 	int i = 0;
 	int j;
-	while (i < map.x)
+	while (i < map.height)
 	{
 		j = 0;
-		while (j < map.y[i])
+		while (j < map.width)
 		{
 			printf("%3i ", map.map[i][j]);
 			j++;
@@ -39,61 +39,54 @@ int open_map(char *map_name)
 	return (fd);
 }
 
-int *convertoint(s_map *map, int x)
+int get_height(char *filename)
 {
-	int i;
-	int *array;
-
-	i = 0;
-	array = (int *)malloc(sizeof(int) * map->y[x]);
-	while (i < map->y[x])
-	{
-		array[i] = ft_atoi(map->buffer[i]);
-		i++;
-	}
-	return (array);
-}
-
-int get_x(char *filename)
-{
-	int x;
+	int height;
 	int fd;
 	char *line;
 
-	x = 0;
+	height = 0;
 	fd = open_map(filename);
 	while (get_next_line(fd, &line))
 	{
-		x++;
+		height++;
 		free(line);
 	}
 	close(fd);
 	free(line);
-	return (x);
+	return (height);
 }
 
-int *get_y(char *filename, int x)
+int get_width(char *filename)
 {
-	int *width;
+	int width;
 	int fd;
 	char *line;
+	char **buffer;
+
+	fd = open_map(filename);
+	get_next_line(fd, &line);
+	buffer = ft_split(line, ' ');
+	width = array_length(buffer);
+	free(line);
+	dfree(buffer);
+	close(fd);
+	return (width);
+}
+
+void fill_line(char *line, int *map_line)
+{
 	char **buffer;
 	int i;
 
 	i = 0;
-	fd = open_map(filename);
-	width = (int*)calloc(sizeof(int) , x);
-	while (get_next_line(fd, &line))
+	buffer = ft_split(line, ' ');
+	while (buffer[i])
 	{
-		buffer = ft_split(line, ' ');
-		width[i] = array_length(buffer);
+		map_line[i] = ft_atoi(buffer[i]);
 		i++;
-		free(line);
-		dfree(buffer);
 	}
-	free(line);
-	close(fd);
-	return (width);
+	dfree(buffer);
 }
 
 s_map parse_map(char *filename)
@@ -102,25 +95,27 @@ s_map parse_map(char *filename)
 	int i;
 
 	i = 0;
-	map.x = get_x(filename);
-	map.y = get_y(filename, map.x);
+	map.width = get_width(filename);
+	map.height = get_height(filename);
 	map.fd = open_map(filename);
-	map.map = (int **)malloc(sizeof(int *) * map.x);
-	while (i < map.x)
+	map.map = (int **)malloc(sizeof(int *) * map.height + 1);
+	while (i < map.width)
 	{
-		map.map[i] = (int *)malloc(sizeof(int) * map.y[i]);
+		map.map[i] = (int *)malloc(sizeof(int) * map.width + 1);
 		i++;
 	}
 	i = 0;
 	while ((get_next_line(map.fd, &map.line)) > 0)
 	{
-		map.buffer = ft_split(map.line, ' ');
-		map.map[i] = convertoint(&map, i);
+		fill_line(map.line,map.map[i]);
 		i++;
-		dfree(map.buffer);
 		free(map.line);
 	}
+	map.map[i] = NULL;
+	printf("W:%i\n", map.width);
+	printf("H:%i\n", map.height);
+	close(map.fd);
 	free(map.line);
 	test(map);
-	return(map);
+	return (map);
 }

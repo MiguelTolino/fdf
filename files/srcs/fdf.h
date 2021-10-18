@@ -6,7 +6,7 @@
 /*   By: mmateo-t <mmateo-t@student.42madrid>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/04 13:27:07 by mmateo-t          #+#    #+#             */
-/*   Updated: 2021/10/17 19:33:25 by mmateo-t         ###   ########.fr       */
+/*   Updated: 2021/10/18 12:50:57 by mmateo-t         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@
 #define SIZE_Y 1000
 #define TITLE "FDF"
 #define ZOOM 20
-#define POSITION 0
+#define POSITION 150
 #define MAX(a,b) (a > b? a : b)
 #define MOD(a) (a < 0 ? -a : a)
 
@@ -55,8 +55,8 @@ typedef struct s_map
 	int **map;
 	char **buffer;
 	char *line;
-	int x;
-	int *y;
+	int width;
+	int height;
 	int fd;
 	s_step step;
 } s_map;
@@ -80,9 +80,11 @@ typedef struct s_mlx
 	int z1_temp;
 }	s_mlx;
 
-
-
-
+typedef struct fdf
+{
+	s_map map;
+	s_mlx mlx;
+}	fdf;
 
 void check_errors(int argc, char **argv);
 s_map parse_map(char *filename);
@@ -91,10 +93,9 @@ int	ft_getnbr(char *str);
 int dfree(char **array);
 int array_length(char **array);
 s_mlx create_window();
-void display_img(s_mlx *mlx, s_map map);
+void display_img(fdf *data);
 void hooks_loop(s_mlx mlx);
-void putpixel(int x, int y);
-void bresenham(float x0, float y0, float x1, float y1, s_mlx *mlx, s_map map);
+void bresenham(float x0, float y0, float x1, float y1, fdf *data);
 int free_map(s_map map);
 
 #endif
