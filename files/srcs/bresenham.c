@@ -6,7 +6,7 @@
 /*   By: mmateo-t <mmateo-t@student.42madrid>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/08 10:18:43 by mmateo-t          #+#    #+#             */
-/*   Updated: 2021/10/18 12:52:45 by mmateo-t         ###   ########.fr       */
+/*   Updated: 2021/10/18 23:30:34 by mmateo-t         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,8 +35,8 @@ static void iso(float *x, float *y, int z)
 
     previous_x = *x;
     previous_y = *y;
-    *x = (previous_x - previous_y) * cos(0.523599);
-    *y = -z + (previous_x + previous_y) * sin(0.523599);
+    *x = (previous_x - previous_y) * cos(0.53);
+    *y = (previous_x + previous_y) * sin(0.53) - z;
 }
 void my_mlx_pixel_put(fdf *data, int x, int y)
 {
@@ -57,29 +57,32 @@ void bresenham(float x0, float y0, float x1, float y1, fdf *data)
 	z0 = data->map.map[(int)y0][(int)x0];
 	z1 = data->map.map[(int)y1][(int)x1];
 
+ 	iso(&x0, &y0, z0);
+	iso(&x1, &y1, z1);
+
 	x0 *= ZOOM;
 	x1 *= ZOOM;
 	y0 *= ZOOM;
 	y1 *= ZOOM;
+
 
  	x0 += POSITION;
 	x1 += POSITION;
 	y0 += POSITION;
 	y1 += POSITION;
 
-/* 	iso(&x0, &y0, z0);
-	iso(&x1, &y1, z1); */
 
 	x_step = x1 - x0;
 	y_step = y1 - y0;
-	max = maxi(mod(x_step), mod(y_step));
+	max = MAX(MOD(x_step), MOD(y_step));
 
 	x_step /= max;
 	y_step /= max;
 	while ((int)(x0 < x1) || (int)(y0 < y1))
 	{
-		//my_mlx_pixel_put(data, (int)x0, (int)y0);
-		mlx_pixel_put(data->mlx.ptr, data->mlx.win, x0, y0, data->mlx.color);
+		if (x0 >= SIZE_X || y0 >= SIZE_Y || x0 < 0 || y0 < 0)
+			break;
+		my_mlx_pixel_put(data, (int)x0, (int)y0);
 		x0 += x_step;
 		y0 += y_step;
 	}

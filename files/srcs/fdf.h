@@ -6,7 +6,7 @@
 /*   By: mmateo-t <mmateo-t@student.42madrid>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/04 13:27:07 by mmateo-t          #+#    #+#             */
-/*   Updated: 2021/10/18 12:50:57 by mmateo-t         ###   ########.fr       */
+/*   Updated: 2021/10/18 23:29:02 by mmateo-t         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@
 #define SIZE_Y 1000
 #define TITLE "FDF"
 #define ZOOM 20
-#define POSITION 150
+#define POSITION 250
 #define MAX(a,b) (a > b? a : b)
 #define MOD(a) (a < 0 ? -a : a)
 
