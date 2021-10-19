@@ -6,7 +6,7 @@
 /*   By: mmateo-t <mmateo-t@student.42madrid>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/06 12:40:56 by mmateo-t          #+#    #+#             */
-/*   Updated: 2021/10/14 14:51:21 by mmateo-t         ###   ########.fr       */
+/*   Updated: 2021/10/19 12:18:56 by mmateo-t         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@ s_img create_img(s_mlx mlx)
 
 	img.ptr = mlx_new_image(mlx.ptr, SIZE_X, SIZE_Y);
 	img.data = mlx_get_data_addr(img.ptr, &img.bbp, &img.size_line, &img.endian);
+	ft_bzero(img.data, ft_strlen(img.data));
 	return (img);
 }
 

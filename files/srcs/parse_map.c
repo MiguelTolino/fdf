@@ -6,7 +6,7 @@
 /*   By: mmateo-t <mmateo-t@student.42madrid>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/05 17:25:14 by mmateo-t          #+#    #+#             */
-/*   Updated: 2021/10/18 12:40:36 by mmateo-t         ###   ########.fr       */
+/*   Updated: 2021/10/19 12:35:16 by mmateo-t         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,22 +98,18 @@ s_map parse_map(char *filename)
 	map.width = get_width(filename);
 	map.height = get_height(filename);
 	map.fd = open_map(filename);
-	map.map = (int **)malloc(sizeof(int *) * map.height + 1);
-	while (i < map.width)
+	map.map = (int **)malloc(sizeof(int *) * map.height);
+	while (i < map.height)
 	{
-		map.map[i] = (int *)malloc(sizeof(int) * map.width + 1);
+		map.map[i] = (int *)malloc(sizeof(int) * map.width);
 		i++;
 	}
 	i = 0;
 	while ((get_next_line(map.fd, &map.line)) > 0)
 	{
-		fill_line(map.line,map.map[i]);
-		i++;
+		fill_line(map.line, map.map[i++]);
 		free(map.line);
 	}
-	map.map[i] = NULL;
-	printf("W:%i\n", map.width);
-	printf("H:%i\n", map.height);
 	close(map.fd);
 	free(map.line);
 	test(map);

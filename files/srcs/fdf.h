@@ -6,7 +6,7 @@
 /*   By: mmateo-t <mmateo-t@student.42madrid>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/04 13:27:07 by mmateo-t          #+#    #+#             */
-/*   Updated: 2021/10/18 23:29:02 by mmateo-t         ###   ########.fr       */
+/*   Updated: 2021/10/19 19:02:23 by mmateo-t         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,9 +32,9 @@
 #define SIZE_Y 1000
 #define TITLE "FDF"
 #define ZOOM 20
-#define POSITION 250
-#define MAX(a,b) (a > b? a : b)
-#define MOD(a) (a < 0 ? -a : a)
+#define POSITION 200
+#define MAX(a,b) (a > b ? a : b)
+#define MOD(a) (a < 0 ? a * -1 : a)
 
 #define RED 0xff0000
 #define BLUE 0x0000ff
@@ -97,5 +97,6 @@ void display_img(fdf *data);
 void hooks_loop(s_mlx mlx);
 void bresenham(float x0, float y0, float x1, float y1, fdf *data);
 int free_map(s_map map);
+void plotline(int x0, int y0, int x1, int y1, fdf *data);
 
 #endif
