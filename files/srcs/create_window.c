@@ -6,7 +6,7 @@
 /*   By: mmateo-t <mmateo-t@student.42madrid>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/06 12:40:56 by mmateo-t          #+#    #+#             */
-/*   Updated: 2021/10/19 19:52:26 by mmateo-t         ###   ########.fr       */
+/*   Updated: 2021/10/19 20:28:16 by mmateo-t         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,5 @@ s_mlx create_window()
 	mlx.ptr = mlx_init();
 	mlx.win = mlx_new_window(mlx.ptr, SIZE_X, SIZE_Y, TITLE);
 	mlx.img = create_img(mlx);
-	put_controls(mlx);
-	return(mlx);
+	return (mlx);
 }

@@ -6,7 +6,7 @@
 /*   By: mmateo-t <mmateo-t@student.42madrid>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/06 13:05:56 by mmateo-t          #+#    #+#             */
-/*   Updated: 2021/10/19 19:56:59 by mmateo-t         ###   ########.fr       */
+/*   Updated: 2021/10/19 20:29:44 by mmateo-t         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,5 +56,6 @@ void display_img(fdf *data)
 		}
 		y++;
 	}
-	mlx_put_image_to_window(data->mlx.ptr, data->mlx.win, data->mlx.img.ptr, SIZE_CONTROL, 0);
+	mlx_put_image_to_window(data->mlx.ptr, data->mlx.win, data->mlx.img.ptr, 0, 0);
+	put_controls(data->mlx);
 }

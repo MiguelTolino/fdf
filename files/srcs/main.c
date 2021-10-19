@@ -6,7 +6,7 @@
 /*   By: mmateo-t <mmateo-t@student.42madrid>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/04 13:26:53 by mmateo-t          #+#    #+#             */
-/*   Updated: 2021/10/19 19:58:54 by mmateo-t         ###   ########.fr       */
+/*   Updated: 2021/10/19 20:50:57 by mmateo-t         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,11 +21,9 @@ int main(int argc, char *argv[])
 	data->map = parse_map(argv[1]);
 	data->map.range = range(data);
 	printf("R: %i", data->map.range);
-	data->mlx = create_window();
 	data->cam = init_cam();
+	data->mlx = create_window();
 	display_img(data);
-	//free_map(map);
-	hooks_loop(data->mlx);
-	free(data);
+	hooks_loop(data);
 	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: mmateo-t <mmateo-t@student.42madrid>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/04 13:27:07 by mmateo-t          #+#    #+#             */
-/*   Updated: 2021/10/19 19:58:03 by mmateo-t         ###   ########.fr       */
+/*   Updated: 2021/10/19 21:16:49 by mmateo-t         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@
 #define SIZE_CONTROL 200
 #define TITLE "FDF"
 #define ZOOM 20
-#define POSITION 200
+#define POSITION 300
 
 #define RED 0xff0000
 #define BLUE 0x0000ff
@@ -46,10 +46,12 @@
 
 typedef struct s_cam
 {
-	int pos;
+	int pos_x;
+	int pos_y;
 	int zoom;
 	int angle;
 	int isometric;
+	int plane;
 } s_cam;
 
 typedef struct s_map
@@ -97,11 +99,14 @@ int dfree(char **array);
 int array_length(char **array);
 s_mlx create_window();
 void display_img(fdf *data);
-void hooks_loop(s_mlx mlx);
+void hooks_loop(fdf *data);
 void bresenham(float x0, float y0, float x1, float y1, fdf *data);
 int free_map(s_map map);
 void plotline(int x0, int y0, int x1, int y1, fdf *data);
 s_cam init_cam();
 int range(fdf *data);
+void put_controls(s_mlx mlx);
+s_img create_img(s_mlx mlx);
+
 
 #endif
