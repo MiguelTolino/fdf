@@ -6,7 +6,7 @@
 /*   By: mmateo-t <mmateo-t@student.42madrid>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/08 10:18:43 by mmateo-t          #+#    #+#             */
-/*   Updated: 2021/10/19 19:01:06 by mmateo-t         ###   ########.fr       */
+/*   Updated: 2021/10/19 20:00:06 by mmateo-t         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,13 +37,12 @@ static void iso(int *x, int *y, int z)
 	previous_y = *y;
 	*x = (previous_x - previous_y) * cos(0.53);
 	*y = (previous_x + previous_y) * sin(0.53) - z;
-
 }
 void my_mlx_pixel_put(fdf *data, int x, int y)
 {
 	char *dst;
 
-	if (x >= SIZE_X || x < 0 || y>= SIZE_Y || y < 0)
+	if (x >= SIZE_X || x < 0 || y >= SIZE_Y || y < 0)
 		return;
 	dst = data->mlx.img.data + (y * data->mlx.img.size_line + x * (data->mlx.img.bbp / 8));
 	*(unsigned int *)dst = data->mlx.color;
@@ -90,7 +89,7 @@ void my_mlx_pixel_put(fdf *data, int x, int y)
 	}
 } */
 
-void plotlinelow(int x0,int  y0,int  x1,int y1, fdf *data)
+void plotlinelow(int x0, int y0, int x1, int y1, fdf *data)
 {
 	int dx;
 	int dy;
@@ -98,26 +97,26 @@ void plotlinelow(int x0,int  y0,int  x1,int y1, fdf *data)
 	int d;
 	int y;
 
-    dx = x1 - x0;
-    dy = y1 - y0;
-    yi = 1;
-    if (dy < 0)
+	dx = x1 - x0;
+	dy = y1 - y0;
+	yi = 1;
+	if (dy < 0)
 	{
-        yi = -1;
-        dy = -dy;
+		yi = -1;
+		dy = -dy;
 	}
-    d = (2 * dy) - dx;
-    y = y0;
-    while (x0 < x1)
+	d = (2 * dy) - dx;
+	y = y0;
+	while (x0 < x1)
 	{
-        my_mlx_pixel_put(data, x0, y);
-        if (d > 0)
+		my_mlx_pixel_put(data, x0, y);
+		if (d > 0)
 		{
-            y = y + yi;
-            d = d + (2 * (dy - dx));
+			y = y + yi;
+			d = d + (2 * (dy - dx));
 		}
-        else
-            d = d + 2*dy;
+		else
+			d = d + 2 * dy;
 		x0++;
 	}
 }
@@ -131,27 +130,27 @@ void plotlinehigh(int x0, int y0, int x1, int y1, fdf *data)
 	int x;
 
 	dx = x1 - x0;
-    dy = y1 - y0;
-    xi = 1;
-    if (dx < 0)
+	dy = y1 - y0;
+	xi = 1;
+	if (dx < 0)
 	{
-        xi = -1;
-        dx = -dx;
+		xi = -1;
+		dx = -dx;
 	}
-    d = (2 * dx) - dy;
-    x = x0;
-  while (y0 < y1)
-  {
-	  my_mlx_pixel_put(data, x, y0);
-        if (d > 0)
+	d = (2 * dx) - dy;
+	x = x0;
+	while (y0 < y1)
+	{
+		my_mlx_pixel_put(data, x, y0);
+		if (d > 0)
 		{
-            x = x + xi;
-            d = d + (2 * (dx - dy));
+			x = x + xi;
+			d = d + (2 * (dx - dy));
 		}
-        else
-            d = d + 2*dx;
+		else
+			d = d + 2 * dx;
 		y0++;
-  }
+	}
 }
 
 void plotline(int x0, int y0, int x1, int y1, fdf *data)
@@ -159,39 +158,39 @@ void plotline(int x0, int y0, int x1, int y1, fdf *data)
 	int z0;
 	int z1;
 
-
 	z0 = data->map.map[(int)y0][(int)x0];
 	z1 = data->map.map[(int)y1][(int)x1];
- 	x0 *= ZOOM;
+	
+	x0 *= ZOOM;
 	y0 *= ZOOM;
 	x1 *= ZOOM;
 	y1 *= ZOOM;
 	z0 *= ZOOM;
 	z1 *= ZOOM;
 
-	iso(&x0, &y0, z0);
-	iso(&x1, &y1, z1);
-
+	if (data->cam.isometric)
+	{
+		iso(&x0, &y0, z0);
+		iso(&x1, &y1, z1);
+	}
 
 	x0 += POSITION;
 	y0 += POSITION;
 	x1 += POSITION;
 	y1 += POSITION;
 
-
-
-    if (abs(y1 - y0) < abs(x1 - x0))
+	if (abs(y1 - y0) < abs(x1 - x0))
 	{
-        if (x0 > x1)
-            plotlinelow(x1, y1, x0, y0, data);
-        else
-            plotlinelow(x0, y0, x1, y1, data);
+		if (x0 > x1)
+			plotlinelow(x1, y1, x0, y0, data);
+		else
+			plotlinelow(x0, y0, x1, y1, data);
 	}
-    else
+	else
 	{
-        if (y0 > y1)
-            plotlinehigh(x1, y1, x0, y0, data);
-        else
-            plotlinehigh(x0, y0, x1, y1, data);
+		if (y0 > y1)
+			plotlinehigh(x1, y1, x0, y0, data);
+		else
+			plotlinehigh(x0, y0, x1, y1, data);
 	}
 }

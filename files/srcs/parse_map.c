@@ -6,28 +6,11 @@
 /*   By: mmateo-t <mmateo-t@student.42madrid>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/05 17:25:14 by mmateo-t          #+#    #+#             */
-/*   Updated: 2021/10/19 12:35:16 by mmateo-t         ###   ########.fr       */
+/*   Updated: 2021/10/19 19:55:51 by mmateo-t         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
-
-void test(s_map map)
-{
-	int i = 0;
-	int j;
-	while (i < map.height)
-	{
-		j = 0;
-		while (j < map.width)
-		{
-			printf("%3i ", map.map[i][j]);
-			j++;
-		}
-		printf("\n");
-		i++;
-	}
-}
 
 int open_map(char *map_name)
 {
@@ -112,6 +95,5 @@ s_map parse_map(char *filename)
 	}
 	close(map.fd);
 	free(map.line);
-	test(map);
 	return (map);
 }

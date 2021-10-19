@@ -6,11 +6,21 @@
 /*   By: mmateo-t <mmateo-t@student.42madrid>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/06 12:40:56 by mmateo-t          #+#    #+#             */
-/*   Updated: 2021/10/19 12:18:56 by mmateo-t         ###   ########.fr       */
+/*   Updated: 2021/10/19 19:52:26 by mmateo-t         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
+
+void put_controls(s_mlx mlx)
+{
+	// 200x800
+	mlx_string_put(mlx.ptr, mlx.win, SIZE_CONTROL / 4, 50, 0xffffff, "CONTROLS");
+	mlx_string_put(mlx.ptr, mlx.win, SIZE_CONTROL / 4, 55, 0xffffff, "________");
+	mlx_string_put(mlx.ptr, mlx.win, SIZE_CONTROL / 4, 80, 0xffffff, "ZOOM: Scroll");
+	mlx_string_put(mlx.ptr, mlx.win, SIZE_CONTROL / 4, 100, 0xffffff, "MOVE: Arrows");
+	mlx_string_put(mlx.ptr, mlx.win, SIZE_CONTROL / 4, 120, 0xffffff, "Projection: ISO -> I");
+}
 
 s_img create_img(s_mlx mlx)
 {
@@ -29,5 +39,6 @@ s_mlx create_window()
 	mlx.ptr = mlx_init();
 	mlx.win = mlx_new_window(mlx.ptr, SIZE_X, SIZE_Y, TITLE);
 	mlx.img = create_img(mlx);
+	put_controls(mlx);
 	return(mlx);
 }

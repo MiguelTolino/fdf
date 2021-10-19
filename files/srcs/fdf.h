@@ -6,7 +6,7 @@
 /*   By: mmateo-t <mmateo-t@student.42madrid>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/04 13:27:07 by mmateo-t          #+#    #+#             */
-/*   Updated: 2021/10/19 19:02:23 by mmateo-t         ###   ########.fr       */
+/*   Updated: 2021/10/19 19:58:03 by mmateo-t         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,15 +26,15 @@
 #include "../includes/key_linux.h"
 
 #define EXT ".fdf"
-#define ANGLE 0.82
+#define ANGLE1 0.82
+#define ANGLE2 0.53
 
 #define SIZE_X 1000
-#define SIZE_Y 1000
+#define SIZE_Y 800
+#define SIZE_CONTROL 200
 #define TITLE "FDF"
 #define ZOOM 20
 #define POSITION 200
-#define MAX(a,b) (a > b ? a : b)
-#define MOD(a) (a < 0 ? a * -1 : a)
 
 #define RED 0xff0000
 #define BLUE 0x0000ff
@@ -44,11 +44,13 @@
 #define PURPLE 0xff00ff
 #define AQUAMARINA 0x00ffff
 
-typedef struct s_step
+typedef struct s_cam
 {
-	int x;
-	int *y;
-} s_step;
+	int pos;
+	int zoom;
+	int angle;
+	int isometric;
+} s_cam;
 
 typedef struct s_map
 {
@@ -58,7 +60,7 @@ typedef struct s_map
 	int width;
 	int height;
 	int fd;
-	s_step step;
+	int range;
 } s_map;
 
 typedef struct s_img
@@ -84,6 +86,7 @@ typedef struct fdf
 {
 	s_map map;
 	s_mlx mlx;
+	s_cam cam;
 }	fdf;
 
 void check_errors(int argc, char **argv);
@@ -98,5 +101,7 @@ void hooks_loop(s_mlx mlx);
 void bresenham(float x0, float y0, float x1, float y1, fdf *data);
 int free_map(s_map map);
 void plotline(int x0, int y0, int x1, int y1, fdf *data);
+s_cam init_cam();
+int range(fdf *data);
 
 #endif

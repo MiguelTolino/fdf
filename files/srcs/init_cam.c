@@ -1,31 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   init_cam.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mmateo-t <mmateo-t@student.42madrid>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/10/04 13:26:53 by mmateo-t          #+#    #+#             */
-/*   Updated: 2021/10/19 19:58:54 by mmateo-t         ###   ########.fr       */
+/*   Created: 2021/10/19 19:39:16 by mmateo-t          #+#    #+#             */
+/*   Updated: 2021/10/19 19:41:47 by mmateo-t         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 
-int main(int argc, char *argv[])
+s_cam init_cam()
 {
-	fdf *data;
+	s_cam cam;
 
-	data = (fdf*)malloc(sizeof(fdf));
-	check_errors(argc, argv);
-	data->map = parse_map(argv[1]);
-	data->map.range = range(data);
-	printf("R: %i", data->map.range);
-	data->mlx = create_window();
-	data->cam = init_cam();
-	display_img(data);
-	//free_map(map);
-	hooks_loop(data->mlx);
-	free(data);
-	return (0);
+	cam.angle = ANGLE2;
+	cam.isometric = 1;
+	cam.zoom = ZOOM;
+	cam.pos = SIZE_X / 3;
+	return (cam);
 }
