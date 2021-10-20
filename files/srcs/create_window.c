@@ -6,12 +6,25 @@
 /*   By: mmateo-t <mmateo-t@student.42madrid>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/06 12:40:56 by mmateo-t          #+#    #+#             */
-/*   Updated: 2021/10/20 12:09:15 by mmateo-t         ###   ########.fr       */
+/*   Updated: 2021/10/21 00:19:05 by mmateo-t         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
-#include <time.h>
+
+void end(s_mlx *mlx)
+{
+	mlx_destroy_image(mlx->ptr, mlx->img.ptr);
+	mlx_destroy_window(mlx->ptr, mlx->win);
+	exit(EXIT_SUCCESS);
+}
+
+void new_image(fdf *data)
+{
+	mlx_destroy_image(data->mlx.ptr, data->mlx.img.ptr);
+	data->mlx.img = create_img(data->mlx);
+	display_img(data);
+}
 
 void put_controls(s_mlx mlx)
 {
@@ -34,9 +47,9 @@ s_img create_img(s_mlx mlx)
 {
 	s_img img;
 
-	img.ptr = mlx_new_image(mlx.ptr, SIZE_X, SIZE_Y);
-	img.data = mlx_get_data_addr(img.ptr, &img.bbp, &img.size_line, &img.endian);
-	ft_bzero(img.data, ft_strlen(img.data));
+	if (!(img.ptr = mlx_new_image(mlx.ptr, SIZE_X, SIZE_Y)) ||
+		!(img.data = mlx_get_data_addr(img.ptr, &img.bbp, &img.size_line, &img.endian)))
+		throw_error("Minilibx Error");
 	return (img);
 }
 
@@ -44,8 +57,9 @@ s_mlx create_window()
 {
 	s_mlx mlx;
 
-	mlx.ptr = mlx_init();
-	mlx.win = mlx_new_window(mlx.ptr, SIZE_X, SIZE_Y, TITLE);
+	if (!(mlx.ptr = mlx_init()) ||
+		!(mlx.win = mlx_new_window(mlx.ptr, SIZE_X, SIZE_Y, TITLE)))
+		throw_error("Minilibx Error");
 	mlx.img = create_img(mlx);
 	return (mlx);
 }

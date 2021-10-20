@@ -6,7 +6,7 @@
 /*   By: mmateo-t <mmateo-t@student.42madrid>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/06 13:40:36 by mmateo-t          #+#    #+#             */
-/*   Updated: 2021/10/20 13:10:12 by mmateo-t         ###   ########.fr       */
+/*   Updated: 2021/10/21 00:19:56 by mmateo-t         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,12 @@
 
 int key_action(int keycode, fdf *data)
 {
+	if (keycode == KEY_ESC)
+	{
+		mlx_destroy_image(data->mlx.ptr, data->mlx.img.ptr);
+		mlx_destroy_window(data->mlx.ptr, data->mlx.win);
+		exit(EXIT_SUCCESS);
+	}
 	if (keycode == KEY_W)
 		data->cam.pos_y -= 10;
 	if (keycode == KEY_A)
@@ -32,29 +38,13 @@ int key_action(int keycode, fdf *data)
 		data->cam.plane = 1;
 		data->cam.isometric = 0;
 	}
-	mlx_clear_window(data->mlx.ptr, data->mlx.win);
-	mlx_destroy_image(data->mlx.ptr, data->mlx.img.ptr);
-	data->mlx.img = create_img(data->mlx);
-	display_img(data);
-	return (0);
-}
-
-int close_win(int keycode, s_mlx *mlx)
-{
-	if (keycode == KEY_ESC)
-	{
-		mlx_destroy_image(mlx->ptr, mlx->img.ptr);
-		mlx_destroy_window(mlx->ptr, mlx->win);
-		exit(EXIT_SUCCESS);
-	}
+	new_image(data);
 	return (0);
 }
 
 int close_x(s_mlx *mlx)
 {
-	mlx_destroy_image(mlx->ptr, mlx->img.ptr);
-	mlx_destroy_window(mlx->ptr, mlx->win);
-	exit(EXIT_SUCCESS);
+	end(mlx);
 	return (0);
 }
 
@@ -66,15 +56,12 @@ int zoom(int button, int x, int y, fdf *data)
 		data->cam.zoom -= 1;
 	if (!data->cam.zoom)
 		data->cam.zoom = 1;
-	mlx_clear_window(data->mlx.ptr, data->mlx.win);
-	data->mlx.img = create_img(data->mlx);
-	display_img(data);
+	new_image(data);
 	return (0);
 }
 
 void hooks_loop(fdf *data)
 {
-	mlx_hook(data->mlx.win, 2, (1L << 0), close_win, &data->mlx);
 	mlx_key_hook(data->mlx.win, key_action, data);
 	mlx_hook(data->mlx.win, 17, (1L << 17), close_x, &data->mlx);
 	mlx_mouse_hook(data->mlx.win, zoom, data);

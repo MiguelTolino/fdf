@@ -6,7 +6,7 @@
 /*   By: mmateo-t <mmateo-t@student.42madrid>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/04 13:27:07 by mmateo-t          #+#    #+#             */
-/*   Updated: 2021/10/20 12:46:37 by mmateo-t         ###   ########.fr       */
+/*   Updated: 2021/10/21 00:19:12 by mmateo-t         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,6 +59,8 @@ typedef struct s_cam
 	int angle;
 	int isometric;
 	int plane;
+	int rotate_x;
+	int rotate_y;
 } s_cam;
 
 typedef struct s_map
@@ -114,7 +116,10 @@ s_cam init_cam(fdf *data);
 s_range range(fdf *data);
 void put_controls(s_mlx mlx);
 s_img create_img(s_mlx mlx);
+void x_rotation(int *y, int *z);
 void my_mlx_pixel_put(fdf *data, int x, int y);
+void new_image(fdf *data);
+void end(s_mlx *mlx);
 
 
 #endif
