@@ -6,34 +6,42 @@
 /*   By: mmateo-t <mmateo-t@student.42madrid>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/06 13:05:56 by mmateo-t          #+#    #+#             */
-/*   Updated: 2021/10/19 20:29:44 by mmateo-t         ###   ########.fr       */
+/*   Updated: 2021/10/20 12:40:47 by mmateo-t         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
+#define N_COLORS 6
 
-unsigned int	set_color(int x, int y, s_map map, int range)
+unsigned int	set_color(int x, int y, s_map map, s_range r)
 {
 	int z;
-	float percent;
+	float inc;
 
 	z = map.map[y][x];
-	percent = ((float)z / (float)range) * 100;
-	//printf("P:%f\n", percent);
-	if (percent < 5)
+	inc = (float)r.range / N_COLORS;
+	if (z <= r.min + inc)
 		return (WHITE);
-	else if (percent <= 20)
+	else if (z <= (r.min + 2 * inc))
 		return (YELLOW);
-	else if (percent <= 40)
+	else if (z <= (r.min + 3 * inc))
 		return (BLUE);
-	else if (percent <= 60)
+	else if (z <= (r.min + 4 * inc))
 		return (GREEN);
-	else if (percent <= 80)
+	else if (z <= (r.min + 5 * inc))
 		return (PURPLE);
-	else if (percent > 80)
+	else if (z <= (r.min + 6 * inc))
 		return (RED);
-	else
-		return (AQUAMARINA);
+}
+
+void my_mlx_pixel_put(fdf *data, int x, int y)
+{
+	char *dst;
+
+	if (x >= SIZE_X || x < 0 || y >= SIZE_Y || y < 0)
+		return;
+	dst = data->mlx.img.data + (y * data->mlx.img.size_line + x * (data->mlx.img.bbp / 8));
+	*(unsigned int *)dst = data->mlx.color;
 }
 
 void display_img(fdf *data)

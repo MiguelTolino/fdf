@@ -6,20 +6,28 @@
 /*   By: mmateo-t <mmateo-t@student.42madrid>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/06 12:40:56 by mmateo-t          #+#    #+#             */
-/*   Updated: 2021/10/19 20:28:16 by mmateo-t         ###   ########.fr       */
+/*   Updated: 2021/10/20 12:09:15 by mmateo-t         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
+#include <time.h>
 
 void put_controls(s_mlx mlx)
 {
-	// 200x800
 	mlx_string_put(mlx.ptr, mlx.win, SIZE_CONTROL / 4, 50, 0xffffff, "CONTROLS");
-	mlx_string_put(mlx.ptr, mlx.win, SIZE_CONTROL / 4, 55, 0xffffff, "________");
-	mlx_string_put(mlx.ptr, mlx.win, SIZE_CONTROL / 4, 80, 0xffffff, "ZOOM: Scroll");
-	mlx_string_put(mlx.ptr, mlx.win, SIZE_CONTROL / 4, 100, 0xffffff, "MOVE: Arrows");
-	mlx_string_put(mlx.ptr, mlx.win, SIZE_CONTROL / 4, 120, 0xffffff, "Projection: ISO -> I");
+	mlx_string_put(mlx.ptr, mlx.win, SIZE_CONTROL / 4, 55, 0x00ff00, "________");
+	mlx_string_put(mlx.ptr, mlx.win, SIZE_CONTROL / 4, 80, 0xffffff, "Zoom: Scroll");
+	mlx_string_put(mlx.ptr, mlx.win, SIZE_CONTROL / 4, 100, 0xffffff, "Move");
+	mlx_string_put(mlx.ptr, mlx.win, SIZE_CONTROL / 4, 105, 0x00ff00, "____");
+	mlx_string_put(mlx.ptr, mlx.win, SIZE_CONTROL / 4, 130, 0xffffff, "W -> Up");
+	mlx_string_put(mlx.ptr, mlx.win, SIZE_CONTROL / 4, 150, 0xffffff, "S -> Down");
+	mlx_string_put(mlx.ptr, mlx.win, SIZE_CONTROL / 4, 170, 0xffffff, "A -> Left");
+	mlx_string_put(mlx.ptr, mlx.win, SIZE_CONTROL / 4, 190, 0xffffff, "D -> Right");
+	mlx_string_put(mlx.ptr, mlx.win, SIZE_CONTROL / 4, 220, 0xffffff, "Projection:");
+	mlx_string_put(mlx.ptr, mlx.win, SIZE_CONTROL / 4, 225, 0x00ff00, "___________");
+	mlx_string_put(mlx.ptr, mlx.win, SIZE_CONTROL / 4, 250, 0xffffff, "ISO -> I");
+	mlx_string_put(mlx.ptr, mlx.win, SIZE_CONTROL / 4, 270, 0xffffff, "PLANE -> P");
 }
 
 s_img create_img(s_mlx mlx)

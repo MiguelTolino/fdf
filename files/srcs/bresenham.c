@@ -6,27 +6,11 @@
 /*   By: mmateo-t <mmateo-t@student.42madrid>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/08 10:18:43 by mmateo-t          #+#    #+#             */
-/*   Updated: 2021/10/19 21:25:24 by mmateo-t         ###   ########.fr       */
+/*   Updated: 2021/10/20 12:13:06 by mmateo-t         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
-
-float mod(float a)
-{
-	if (a < 0)
-		return (-a);
-	else
-		return (a);
-}
-
-float maxi(float a, float b)
-{
-	if (a > b)
-		return (a);
-	else
-		return (b);
-}
 
 static void iso(int *x, int *y, int z)
 {
@@ -38,15 +22,7 @@ static void iso(int *x, int *y, int z)
 	*x = (previous_x - previous_y) * cos(0.53);
 	*y = (previous_x + previous_y) * sin(0.53) - z;
 }
-void my_mlx_pixel_put(fdf *data, int x, int y)
-{
-	char *dst;
 
-	if (x >= SIZE_X || x < 0 || y >= SIZE_Y || y < 0)
-		return;
-	dst = data->mlx.img.data + (y * data->mlx.img.size_line + x * (data->mlx.img.bbp / 8));
-	*(unsigned int *)dst = data->mlx.color;
-}
 
 void plotlinelow(int x0, int y0, int x1, int y1, fdf *data)
 {
@@ -125,8 +101,8 @@ void plotline(int x0, int y0, int x1, int y1, fdf *data)
 	y0 *= data->cam.zoom;
 	x1 *= data->cam.zoom;
 	y1 *= data->cam.zoom;
-	//z0 *= ZOOM;
-	//z1 *= ZOOM;
+	z0 *= data->cam.zoom;
+	z1 *= data->cam.zoom;
 
 	if (data->cam.isometric)
 	{

@@ -6,7 +6,7 @@
 /*   By: mmateo-t <mmateo-t@student.42madrid>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/04 13:27:07 by mmateo-t          #+#    #+#             */
-/*   Updated: 2021/10/19 21:16:49 by mmateo-t         ###   ########.fr       */
+/*   Updated: 2021/10/20 12:46:37 by mmateo-t         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,13 @@
 #define PURPLE 0xff00ff
 #define AQUAMARINA 0x00ffff
 
+typedef struct s_range
+{
+	int max;
+	int min;
+	int range;
+}	s_range;
+
 typedef struct s_cam
 {
 	int pos_x;
@@ -62,7 +69,7 @@ typedef struct s_map
 	int width;
 	int height;
 	int fd;
-	int range;
+	s_range range;
 } s_map;
 
 typedef struct s_img
@@ -103,10 +110,11 @@ void hooks_loop(fdf *data);
 void bresenham(float x0, float y0, float x1, float y1, fdf *data);
 int free_map(s_map map);
 void plotline(int x0, int y0, int x1, int y1, fdf *data);
-s_cam init_cam();
-int range(fdf *data);
+s_cam init_cam(fdf *data);
+s_range range(fdf *data);
 void put_controls(s_mlx mlx);
 s_img create_img(s_mlx mlx);
+void my_mlx_pixel_put(fdf *data, int x, int y);
 
 
 #endif
