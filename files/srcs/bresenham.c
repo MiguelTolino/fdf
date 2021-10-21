@@ -6,23 +6,11 @@
 /*   By: mmateo-t <mmateo-t@student.42madrid>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/08 10:18:43 by mmateo-t          #+#    #+#             */
-/*   Updated: 2021/10/20 23:44:59 by mmateo-t         ###   ########.fr       */
+/*   Updated: 2021/10/21 11:43:07 by mmateo-t         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
-
-static void iso(int *x, int *y, int z)
-{
-	int previous_x;
-	int previous_y;
-
-	previous_x = *x;
-	previous_y = *y;
-	*x = (previous_x - previous_y) * cos(ANGLE2);
-	*y = (previous_x + previous_y) * sin(ANGLE2) - z;
-}
-
 
 void plotlinelow(int x0, int y0, int x1, int y1, fdf *data)
 {
@@ -96,7 +84,6 @@ void plotline(int x0, int y0, int x1, int y1, fdf *data)
 	z0 = data->map.map[(int)y0][(int)x0];
 	z1 = data->map.map[(int)y1][(int)x1];
 
-
 	x0 *= data->cam.zoom;
 	y0 *= data->cam.zoom;
 	x1 *= data->cam.zoom;
@@ -104,22 +91,14 @@ void plotline(int x0, int y0, int x1, int y1, fdf *data)
 	z0 *= data->cam.zoom / 2;
 	z1 *= data->cam.zoom / 2;
 
+	rotate(&x0, &y0, &z0, data);
+	rotate(&x1, &y1, &z1, data);
+
 	if (data->cam.isometric)
 	{
 		iso(&x0, &y0, z0);
 		iso(&x1, &y1, z1);
 	}
-
-/* 	if (data->cam.rotate_x)
-	{
-		x_rotation(&x0, &y0);
-		x_rotation(&x1, &y1);
-	}
-	if (data->cam.rotate_y)
-	{
-		y_rotation(&x0, &y0);
-		y_rotation(&x1, &y1);
-	} */
 
 	x0 += data->cam.pos_x;
 	y0 += data->cam.pos_y;
