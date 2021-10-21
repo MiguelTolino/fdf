@@ -6,7 +6,7 @@
 /*   By: mmateo-t <mmateo-t@student.42madrid>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/04 13:27:07 by mmateo-t          #+#    #+#             */
-/*   Updated: 2021/10/21 11:01:07 by mmateo-t         ###   ########.fr       */
+/*   Updated: 2021/10/21 11:59:30 by mmateo-t         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -119,9 +119,6 @@ void my_mlx_pixel_put(fdf *data, int x, int y);
 void new_image(fdf *data);
 void end(s_mlx *mlx);
 void iso(int *x, int *y, int z);
-/* void z_rotation(int *x, int *y);
-void y_rotation(int *x, int *z);
-void x_rotation(int *y, int *z); */
 void rotate(int *x, int *y, int *z, fdf *data);
 
 

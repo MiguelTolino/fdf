@@ -6,7 +6,7 @@
 /*   By: mmateo-t <mmateo-t@student.42madrid>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/06 13:40:36 by mmateo-t          #+#    #+#             */
-/*   Updated: 2021/10/21 11:42:51 by mmateo-t         ###   ########.fr       */
+/*   Updated: 2021/10/21 12:00:08 by mmateo-t         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,21 +15,11 @@
 void rotation(int keycode, fdf *data)
 {
 	if (keycode == KEY_LEFT)
-	{
 		data->cam.rotate[0] = 1;
-				if (data->cam.rotate[1] || data->cam.rotate[2])
-			data->cam.angle = 0.1;
-	}
 	if (keycode == KEY_RIGHT)
-	{
-		if (data->cam.rotate[0] || data->cam.rotate[2])
-			data->cam.angle = 0.1;
 		data->cam.rotate[1] = 1;
-	}
 	if (keycode == KEY_UP)
-	{
 		data->cam.rotate[2] = 1;
-	}
 	if (keycode == KEY_DOWN)
 	{
 		data->cam.rotate[0] = 0;
@@ -39,7 +29,6 @@ void rotation(int keycode, fdf *data)
 	}
 	if (keycode == KEY_LEFT || keycode == KEY_RIGHT || keycode == KEY_UP)
 		data->cam.angle += 0.1;
-
 }
 
 int key_action(int keycode, fdf *data)

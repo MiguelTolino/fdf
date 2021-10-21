@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   create_window.c                                    :+:      :+:    :+:   */
+/*   manage_window.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mmateo-t <mmateo-t@student.42madrid>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/06 12:40:56 by mmateo-t          #+#    #+#             */
-/*   Updated: 2021/10/21 00:19:05 by mmateo-t         ###   ########.fr       */
+/*   Updated: 2021/10/21 12:04:57 by mmateo-t         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,10 +37,16 @@ void put_controls(s_mlx mlx)
 	mlx_string_put(mlx.ptr, mlx.win, SIZE_CONTROL / 4, 150, 0xffffff, "S -> Down");
 	mlx_string_put(mlx.ptr, mlx.win, SIZE_CONTROL / 4, 170, 0xffffff, "A -> Left");
 	mlx_string_put(mlx.ptr, mlx.win, SIZE_CONTROL / 4, 190, 0xffffff, "D -> Right");
-	mlx_string_put(mlx.ptr, mlx.win, SIZE_CONTROL / 4, 220, 0xffffff, "Projection:");
-	mlx_string_put(mlx.ptr, mlx.win, SIZE_CONTROL / 4, 225, 0x00ff00, "___________");
+	mlx_string_put(mlx.ptr, mlx.win, SIZE_CONTROL / 4, 220, 0xffffff, "Projection");
+	mlx_string_put(mlx.ptr, mlx.win, SIZE_CONTROL / 4, 225, 0x00ff00, "__________");
 	mlx_string_put(mlx.ptr, mlx.win, SIZE_CONTROL / 4, 250, 0xffffff, "ISO -> I");
 	mlx_string_put(mlx.ptr, mlx.win, SIZE_CONTROL / 4, 270, 0xffffff, "PLANE -> P");
+	mlx_string_put(mlx.ptr, mlx.win, SIZE_CONTROL / 4, 300, 0xffffff, "Rotation: Arrows");
+	mlx_string_put(mlx.ptr, mlx.win, SIZE_CONTROL / 4, 305, 0x00ff00, "________________");
+	mlx_string_put(mlx.ptr, mlx.win, SIZE_CONTROL / 4, 330, 0xffffff, "Left -> X Axis");
+	mlx_string_put(mlx.ptr, mlx.win, SIZE_CONTROL / 4, 350, 0xffffff, "Right -> Y Axis");
+	mlx_string_put(mlx.ptr, mlx.win, SIZE_CONTROL / 4, 370, 0xffffff, "Up -> Z Axis");
+	mlx_string_put(mlx.ptr, mlx.win, SIZE_CONTROL / 4, 390, 0xffffff, "Down -> Reset");
 }
 
 s_img create_img(s_mlx mlx)

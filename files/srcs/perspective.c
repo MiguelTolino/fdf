@@ -6,7 +6,7 @@
 /*   By: mmateo-t <mmateo-t@student.42madrid>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/21 00:23:30 by mmateo-t          #+#    #+#             */
-/*   Updated: 2021/10/21 11:40:07 by mmateo-t         ###   ########.fr       */
+/*   Updated: 2021/10/21 11:55:19 by mmateo-t         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,21 +64,9 @@ void rotate(int *x, int *y, int *z, fdf *data)
 {
 	printf("%f\n", data->cam.angle);
 	if (data->cam.rotate[0])
-	{
-		if (data->cam.rotate[1] || data->cam.rotate[2])
-			data->cam.angle = 0.1;
 		x_rotation(y, z, data->cam.angle);
-	}
 	if (data->cam.rotate[1])
-	{
-		if (data->cam.rotate[0] || data->cam.rotate[2])
-			data->cam.angle = 0.1;
 		y_rotation(x, z, data->cam.angle);
-	}
 	if (data->cam.rotate[2])
-	{
-		if (data->cam.rotate[0] || data->cam.rotate[1])
-			data->cam.angle = 0.1;
 		z_rotation(x, y, data->cam.angle);
-	}
 }
