@@ -6,7 +6,7 @@
 /*   By: mmateo-t <mmateo-t@student.42madrid>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/06 13:40:36 by mmateo-t          #+#    #+#             */
-/*   Updated: 2021/10/21 12:00:08 by mmateo-t         ###   ########.fr       */
+/*   Updated: 2021/10/21 13:52:49 by mmateo-t         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,11 +47,21 @@ int key_action(int keycode, fdf *data)
 	{
 		data->cam.isometric = 1;
 		data->cam.plane = 0;
+		data->cam.oblique = 0;
+		data->cam.projection_angle = ANGLE2;
 	}
 	if (keycode == KEY_P)
 	{
 		data->cam.plane = 1;
 		data->cam.isometric = 0;
+		data->cam.oblique = 0;
+	}
+	if (keycode == KEY_O)
+	{
+		data->cam.plane = 0;
+		data->cam.isometric = 0;
+		data->cam.oblique = 1;
+		data->cam.projection_angle = ANGLE1;
 	}
 	rotation(keycode, data);
 	new_image(data);

@@ -6,7 +6,7 @@
 /*   By: mmateo-t <mmateo-t@student.42madrid>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/19 19:39:16 by mmateo-t          #+#    #+#             */
-/*   Updated: 2021/10/21 11:34:06 by mmateo-t         ###   ########.fr       */
+/*   Updated: 2021/10/21 13:53:15 by mmateo-t         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,8 +30,10 @@ s_cam init_cam(fdf *data)
 
 	data->map.range = range(data);
 	cam.angle = 0.1;
+	cam.projection_angle = ANGLE2;
 	cam.isometric = 1;
 	cam.plane = 0;
+	cam.oblique = 0;
 	cam.zoom = select_zoom(data->map.width);
 	cam.pos_x = SIZE_X / 3 + 100;
 	cam.pos_y = SIZE_Y / 2;

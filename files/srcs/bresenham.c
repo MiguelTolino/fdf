@@ -6,7 +6,7 @@
 /*   By: mmateo-t <mmateo-t@student.42madrid>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/08 10:18:43 by mmateo-t          #+#    #+#             */
-/*   Updated: 2021/10/21 11:43:07 by mmateo-t         ###   ########.fr       */
+/*   Updated: 2021/10/21 13:53:28 by mmateo-t         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,12 +94,11 @@ void plotline(int x0, int y0, int x1, int y1, fdf *data)
 	rotate(&x0, &y0, &z0, data);
 	rotate(&x1, &y1, &z1, data);
 
-	if (data->cam.isometric)
+	if (data->cam.isometric || data->cam.oblique)
 	{
-		iso(&x0, &y0, z0);
-		iso(&x1, &y1, z1);
+		iso(&x0, &y0, z0, data->cam.projection_angle);
+		iso(&x1, &y1, z1, data->cam.projection_angle);
 	}
-
 	x0 += data->cam.pos_x;
 	y0 += data->cam.pos_y;
 	x1 += data->cam.pos_x;

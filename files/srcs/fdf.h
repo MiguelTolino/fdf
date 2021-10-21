@@ -6,7 +6,7 @@
 /*   By: mmateo-t <mmateo-t@student.42madrid>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/04 13:27:07 by mmateo-t          #+#    #+#             */
-/*   Updated: 2021/10/21 11:59:30 by mmateo-t         ###   ########.fr       */
+/*   Updated: 2021/10/21 13:52:42 by mmateo-t         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@
 #include "../includes/key_linux.h"
 
 #define EXT ".fdf"
-#define ANGLE1 0.82
+#define ANGLE1 0.2
 #define ANGLE2 0.53
 
 #define SIZE_X 1000
@@ -57,8 +57,10 @@ typedef struct s_cam
 	int pos_y;
 	int zoom;
 	double angle;
+	double projection_angle;
 	int isometric;
 	int plane;
+	int oblique;
 	int rotate[3];
 } s_cam;
 
@@ -118,7 +120,7 @@ s_img create_img(s_mlx mlx);
 void my_mlx_pixel_put(fdf *data, int x, int y);
 void new_image(fdf *data);
 void end(s_mlx *mlx);
-void iso(int *x, int *y, int z);
+void iso(int *x, int *y, int z, double angle);
 void rotate(int *x, int *y, int *z, fdf *data);
 
 
