@@ -37,9 +37,9 @@ a parameter to your program.
 ## 🖼 Screenshots
 ![Screeshot1](screenshots/ss1.png)
 ![Screeshot1](screenshots/ss2.png)
-### Links
+### Links 🔗
 - [Computer Graphics Tutorial](https://www.javatpoint.com/computer-graphics-programs)
-- [FDF Video Tutorial] (https://www.youtube.com/watch?v=10P59aOgi68)
+- [FDF Video Tutorial](https://www.youtube.com/watch?v=10P59aOgi68)
 - [Minilibx Guide](https://qst0.github.io/ft_libgfx/man_mlx.html)
 - [Minilibx Getting Started](https://harm-smits.github.io/42docs/libs/minilibx/getting_started.html)
 
