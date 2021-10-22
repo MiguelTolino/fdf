@@ -1,8 +1,14 @@
-# 🖼️ fdf 
+# 🖼️ FDF
 This project is about creating a simplified graphic “wireframe” (“fils de fer” in French,
 hence the name of the project) representation of a relief landscape linking various points
 (x, y, z) via segments. The coordinates of this landscape are stored in a file passed as
 a parameter to your program.
+## Features ✔️
+- Differents colors which depends on height
+- Rotation in 3 axis *(x,y,z)*
+- Traslation of the map
+- 3 kinds of perspectives *(Isometric, Planar, Oblique)*
+- Zoom in/out
 ## 📖 Requirements
 - Linux
 - GCC
