@@ -3,7 +3,7 @@ This project is about creating a simplified graphic “wireframe” (“fils de 
 hence the name of the project) representation of a relief landscape linking various points
 (x, y, z) via segments. The coordinates of this landscape are stored in a file passed as
 a parameter to your program.
-## Features ✔️
+## ✔️ Features
 - Differents colors which depends on height
 - Rotation in 3 axis *(x,y,z)*
 - Map traslation
