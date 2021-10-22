@@ -28,4 +28,6 @@ a parameter to your program.
 - Y Axis ➡️
 - Z Axis ⬆️
 - Reset ⬇️
-### 🖼️ Pictures
+### 🖼 Screenshots
+![Screeshot1](screenshots/ss1.png)
+![Screeshot1](screenshots/ss2.png)
