@@ -6,7 +6,7 @@ a parameter to your program.
 ## Features ✔️
 - Differents colors which depends on height
 - Rotation in 3 axis *(x,y,z)*
-- Traslation of the map
+- Map traslation
 - 3 kinds of perspectives *(Isometric, Planar, Oblique)*
 - Zoom in/out
 ## 📖 Requirements
