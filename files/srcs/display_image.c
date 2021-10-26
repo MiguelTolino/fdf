@@ -6,7 +6,7 @@
 /*   By: mmateo-t <mmateo-t@student.42madrid>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/06 13:05:56 by mmateo-t          #+#    #+#             */
-/*   Updated: 2021/10/20 12:40:47 by mmateo-t         ###   ########.fr       */
+/*   Updated: 2021/10/26 10:17:24 by mmateo-t         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,7 @@ unsigned int	set_color(int x, int y, s_map map, s_range r)
 		return (PURPLE);
 	else if (z <= (r.min + 6 * inc))
 		return (RED);
+	return (0);
 }
 
 void my_mlx_pixel_put(fdf *data, int x, int y)

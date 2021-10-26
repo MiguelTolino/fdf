@@ -6,7 +6,7 @@
 /*   By: mmateo-t <mmateo-t@student.42madrid>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/06 13:40:36 by mmateo-t          #+#    #+#             */
-/*   Updated: 2021/10/21 13:52:49 by mmateo-t         ###   ########.fr       */
+/*   Updated: 2021/10/26 10:20:10 by mmateo-t         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,6 +76,11 @@ int close_x(s_mlx *mlx)
 
 int zoom(int button, int x, int y, fdf *data)
 {
+	int posx;
+	int poxy;
+
+	posx = x;
+	posy = y;
 	if (button == M_SCR_U && data->cam.zoom)
 		data->cam.zoom += 1;
 	if (button == M_SCR_D && data->cam.zoom)
