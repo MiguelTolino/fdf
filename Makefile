@@ -6,7 +6,7 @@
 #    By: mmateo-t <mmateo-t@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/06/24 16:04:19 by user42            #+#    #+#              #
-#    Updated: 2021/11/07 21:02:50 by mmateo-t         ###   ########.fr        #
+#    Updated: 2021/11/07 23:30:12 by mmateo-t         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -26,16 +26,20 @@ CFLAGS:= -Wall -Werror -Wextra
 LM:= -lm
 LIBFT_PATH:= files/lib/libft
 LIBFT_LIB:= -L$(LIBFT_PATH) $(LIBFT_PATH)/libft.a
-MINILIBX:= -Lfiles/lib/minilibx-linux files/lib/minilibx-linux/libmlx.a -lXext -lX11 -lmlx
-MINILIBX_MAC:= -lmlx -framework OpenGL -framework AppKit
 RM :=	rm -rvf
 GNL:= files/lib/get_next_line/*.c
 DEBUG_FLAG:= -g
+UNAME_S := $(shell uname -s)
+ifeq ($(UNAME_S),Darwin)
+	MINILIBX:= -lmlx -framework OpenGL -framework AppKit
+else
+	MINILIBX:= -Lfiles/lib/minilibx-linux files/lib/minilibx-linux/libmlx.a -lXext -lX11 -lmlx
+endif
 
 all:	libft $(NAME) msg
 
 $(NAME): $(OBJS)
-	$(CC) $(CFLAGS) $(GNL) $(OBJS) -o $(NAME) $(MINILIBX_MAC) $(LM) $(LIBFT_LIB)
+	$(CC) $(CFLAGS) $(GNL) $(OBJS) -o $(NAME) $(MINILIBX) $(LM) $(LIBFT_LIB)
 
 $(%.o): $(%.c)
 		$(CC) -c $^ -o $@

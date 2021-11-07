@@ -6,16 +6,11 @@
 /*   By: mmateo-t <mmateo-t@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/06 13:40:36 by mmateo-t          #+#    #+#             */
-/*   Updated: 2021/11/07 22:03:15 by mmateo-t         ###   ########.fr       */
+/*   Updated: 2021/11/07 23:44:17 by mmateo-t         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
-/* # ifdef __linux__
-# include "../includes/key_linux.h"
-#elif __Apple__ */
-# include "../includes/key_macos.h"
-//#endif
 
 void	rotation(int keycode, fdf *data)
 {
@@ -41,13 +36,13 @@ int	key_action(int keycode, fdf *data)
 	if (keycode == K_ESC)
 		end(&data->mlx);
 	if (keycode == K_W)
-		data->cam.pos_y -= 10;
+		data->cam.pos_y -= SPEED_MOV;
 	if (keycode == K_A)
-		data->cam.pos_x -= 10;
+		data->cam.pos_x -= SPEED_MOV;
 	if (keycode == K_D)
-		data->cam.pos_x += 10;
+		data->cam.pos_x += SPEED_MOV;
 	if (keycode == K_S)
-		data->cam.pos_y += 10;
+		data->cam.pos_y += SPEED_MOV;
 	if (keycode == K_I)
 	{
 		data->cam.isometric = 1;

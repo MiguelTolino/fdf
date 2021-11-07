@@ -6,7 +6,7 @@
 /*   By: mmateo-t <mmateo-t@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/04 13:27:07 by mmateo-t          #+#    #+#             */
-/*   Updated: 2021/11/07 21:54:35 by mmateo-t         ###   ########.fr       */
+/*   Updated: 2021/11/07 23:44:57 by mmateo-t         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,19 +19,19 @@
 # include <unistd.h>
 # include <stdlib.h>
 # include <fcntl.h>
-//#include "X11/X.h"
 # include "../lib/libft/libft.h"
 # include "../lib/get_next_line/get_next_line_bonus.h"
 
 # define EXT ".fdf"
 # define ANGLE1 0.2
 # define ANGLE2 0.53
-# define SIZE_X 1000
-# define SIZE_Y 800
+# define SIZE_X 1600
+# define SIZE_Y 1200
 # define SIZE_CONTROL 200
 # define TITLE "FDF"
 # define ZOOM 20
 # define POSITION 300
+# define SPEED_MOV 20
 
 # define RED 0xff0000
 # define BLUE 0x0000ff
@@ -40,6 +40,14 @@
 # define YELLOW 0xffff00
 # define PURPLE 0xff00ff
 # define AQUAMARINA 0x00ffff
+
+
+# ifdef __linux__
+# include "../includes/key_linux.h"
+# include "X11/X.h"
+#else
+# include "../includes/key_macos.h"
+#endif
 
 typedef struct s_range
 {
