@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: mmateo-t <mmateo-t@student.42madrid>       +#+  +:+       +#+         #
+#    By: mmateo-t <mmateo-t@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/06/24 16:04:19 by user42            #+#    #+#              #
-#    Updated: 2021/11/07 19:39:06 by mmateo-t         ###   ########.fr        #
+#    Updated: 2021/11/07 21:02:50 by mmateo-t         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -27,7 +27,7 @@ LM:= -lm
 LIBFT_PATH:= files/lib/libft
 LIBFT_LIB:= -L$(LIBFT_PATH) $(LIBFT_PATH)/libft.a
 MINILIBX:= -Lfiles/lib/minilibx-linux files/lib/minilibx-linux/libmlx.a -lXext -lX11 -lmlx
-MINILIBX_MACOS:= -lmlx -framework OpenGL -framework AppKit
+MINILIBX_MAC:= -lmlx -framework OpenGL -framework AppKit
 RM :=	rm -rvf
 GNL:= files/lib/get_next_line/*.c
 DEBUG_FLAG:= -g

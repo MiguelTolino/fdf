@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   key_macos.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: oouklich <oouklich@student.1337.ma>        +#+  +:+       +#+        */
+/*   By: mmateo-t <mmateo-t@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/19 17:40:13 by oouklich          #+#    #+#             */
-/*   Updated: 2019/12/28 22:20:38 by oouklich         ###   ########.fr       */
+/*   Updated: 2021/11/07 22:00:08 by mmateo-t         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,10 +48,10 @@
 ** Keyboard ARROWS
 */
 
-# define K_AR_L 123
-# define K_AR_R 124
-# define K_AR_U 126
-# define K_AR_D 125
+# define K_LEFT 123
+# define K_RIGHT 124
+# define K_UP 126
+# define K_DOWN 125
 
 /*
 ** Keyboard NUMPAD

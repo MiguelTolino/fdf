@@ -6,7 +6,7 @@
 /*   By: mmateo-t <mmateo-t@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/04 13:27:07 by mmateo-t          #+#    #+#             */
-/*   Updated: 2021/11/07 19:55:31 by mmateo-t         ###   ########.fr       */
+/*   Updated: 2021/11/07 21:54:35 by mmateo-t         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,6 @@
 //#include "X11/X.h"
 # include "../lib/libft/libft.h"
 # include "../lib/get_next_line/get_next_line_bonus.h"
-# include "../includes/key_linux.h"
 
 # define EXT ".fdf"
 # define ANGLE1 0.2
