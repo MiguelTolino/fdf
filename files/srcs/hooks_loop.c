@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   hooks_loop.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mmateo-t <mmateo-t@student.42madrid>       +#+  +:+       +#+        */
+/*   By: mmateo-t <mmateo-t@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/06 13:40:36 by mmateo-t          #+#    #+#             */
-/*   Updated: 2021/10/26 10:20:10 by mmateo-t         ###   ########.fr       */
+/*   Updated: 2021/11/07 19:23:48 by mmateo-t         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 
-void rotation(int keycode, fdf *data)
+void	rotation(int keycode, fdf *data)
 {
 	if (keycode == KEY_LEFT)
 		data->cam.rotate[0] = 1;
@@ -31,7 +31,7 @@ void rotation(int keycode, fdf *data)
 		data->cam.angle += 0.1;
 }
 
-int key_action(int keycode, fdf *data)
+int	key_action(int keycode, fdf *data)
 {
 	if (keycode == KEY_ESC)
 		end(&data->mlx);
@@ -68,19 +68,14 @@ int key_action(int keycode, fdf *data)
 	return (0);
 }
 
-int close_x(s_mlx *mlx)
+int	close_x(s_mlx *mlx)
 {
 	end(mlx);
 	return (0);
 }
 
-int zoom(int button, int x, int y, fdf *data)
+int	zoom(int button, int x, int y, fdf *data)
 {
-	int posx;
-	int poxy;
-
-	posx = x;
-	posy = y;
 	if (button == M_SCR_U && data->cam.zoom)
 		data->cam.zoom += 1;
 	if (button == M_SCR_D && data->cam.zoom)
@@ -91,7 +86,7 @@ int zoom(int button, int x, int y, fdf *data)
 	return (0);
 }
 
-void hooks_loop(fdf *data)
+void	hooks_loop(fdf *data)
 {
 	mlx_key_hook(data->mlx.win, key_action, data);
 	mlx_hook(data->mlx.win, 17, (1L << 17), close_x, &data->mlx);

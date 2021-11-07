@@ -3,30 +3,30 @@
 /*                                                        :::      ::::::::   */
 /*   manage_window.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mmateo-t <mmateo-t@student.42madrid>       +#+  +:+       +#+        */
+/*   By: mmateo-t <mmateo-t@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/06 12:40:56 by mmateo-t          #+#    #+#             */
-/*   Updated: 2021/10/21 13:52:19 by mmateo-t         ###   ########.fr       */
+/*   Updated: 2021/11/07 19:43:00 by mmateo-t         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 
-void end(s_mlx *mlx)
+void	end(s_mlx *mlx)
 {
 	mlx_destroy_image(mlx->ptr, mlx->img.ptr);
 	mlx_destroy_window(mlx->ptr, mlx->win);
 	exit(EXIT_SUCCESS);
 }
 
-void new_image(fdf *data)
+void	new_image(fdf *data)
 {
 	mlx_destroy_image(data->mlx.ptr, data->mlx.img.ptr);
 	data->mlx.img = create_img(data->mlx);
 	display_img(data);
 }
 
-void put_controls(s_mlx mlx)
+void	put_controls(s_mlx mlx)
 {
 	mlx_string_put(mlx.ptr, mlx.win, SIZE_CONTROL / 4, 50, 0xffffff, "CONTROLS");
 	mlx_string_put(mlx.ptr, mlx.win, SIZE_CONTROL / 4, 55, 0x00ff00, "________");
@@ -50,22 +50,26 @@ void put_controls(s_mlx mlx)
 	mlx_string_put(mlx.ptr, mlx.win, SIZE_CONTROL / 4, 410, 0xffffff, "Down -> Reset");
 }
 
-s_img create_img(s_mlx mlx)
+s_img	create_img(s_mlx mlx)
 {
-	s_img img;
+	s_img	img;
 
-	if (!(img.ptr = mlx_new_image(mlx.ptr, SIZE_X, SIZE_Y)) ||
+	img.ptr = mlx_new_image(mlx.ptr, SIZE_X, SIZE_Y);
+	img.data = mlx_get_data_addr(img.ptr, &img.bbp, &img.size_line, &img.endian);
+	if (!(img.ptr) ||
 		!(img.data = mlx_get_data_addr(img.ptr, &img.bbp, &img.size_line, &img.endian)))
 		throw_error("Minilibx Error");
 	return (img);
 }
 
-s_mlx create_window()
+s_mlx	create_window()
 {
-	s_mlx mlx;
+	s_mlx	mlx;
 
-	if (!(mlx.ptr = mlx_init()) ||
-		!(mlx.win = mlx_new_window(mlx.ptr, SIZE_X, SIZE_Y, TITLE)))
+	mlx.ptr = mlx_init();
+	mlx.win = mlx_new_window(mlx.ptr, SIZE_X, SIZE_Y, TITLE);
+	if (!(mlx.ptr) ||
+		!(mlx.win))
 		throw_error("Minilibx Error");
 	mlx.img = create_img(mlx);
 	return (mlx);

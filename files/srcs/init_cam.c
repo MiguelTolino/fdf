@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   init_cam.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mmateo-t <mmateo-t@student.42madrid>       +#+  +:+       +#+        */
+/*   By: mmateo-t <mmateo-t@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/19 19:39:16 by mmateo-t          #+#    #+#             */
-/*   Updated: 2021/10/21 13:53:15 by mmateo-t         ###   ########.fr       */
+/*   Updated: 2021/11/07 19:24:30 by mmateo-t         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 
-int select_zoom(int size)
+int	select_zoom(int size)
 {
 	if (size <= 20)
 		return (ZOOM);
@@ -24,9 +24,9 @@ int select_zoom(int size)
 		return (1);
 }
 
-s_cam init_cam(fdf *data)
+s_cam	init_cam(fdf *data)
 {
-	s_cam cam;
+	s_cam	cam;
 
 	data->map.range = range(data);
 	cam.angle = 0.1;

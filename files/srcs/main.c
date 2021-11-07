@@ -3,18 +3,18 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mmateo-t <mmateo-t@student.42madrid>       +#+  +:+       +#+        */
+/*   By: mmateo-t <mmateo-t@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/04 13:26:53 by mmateo-t          #+#    #+#             */
-/*   Updated: 2021/10/20 23:42:59 by mmateo-t         ###   ########.fr       */
+/*   Updated: 2021/11/07 19:26:59 by mmateo-t         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 
-int main(int argc, char *argv[])
+int	main(int argc, char *argv[])
 {
-	fdf *data;
+	fdf	*data;
 
 	data = (fdf*)malloc(sizeof(fdf));
 	check_errors(argc, argv);

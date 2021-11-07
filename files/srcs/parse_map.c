@@ -3,18 +3,18 @@
 /*                                                        :::      ::::::::   */
 /*   parse_map.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mmateo-t <mmateo-t@student.42madrid>       +#+  +:+       +#+        */
+/*   By: mmateo-t <mmateo-t@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/05 17:25:14 by mmateo-t          #+#    #+#             */
-/*   Updated: 2021/10/19 19:55:51 by mmateo-t         ###   ########.fr       */
+/*   Updated: 2021/11/07 19:46:45 by mmateo-t         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 
-int open_map(char *map_name)
+int	open_map(char *map_name)
 {
-	int fd;
+	int	fd;
 
 	fd = open(map_name, O_RDONLY, 0);
 	if (fd <= 0)
@@ -22,11 +22,11 @@ int open_map(char *map_name)
 	return (fd);
 }
 
-int get_height(char *filename)
+int	get_height(char *filename)
 {
-	int height;
-	int fd;
-	char *line;
+	int		height;
+	int		fd;
+	char	*line;
 
 	height = 0;
 	fd = open_map(filename);
@@ -40,12 +40,12 @@ int get_height(char *filename)
 	return (height);
 }
 
-int get_width(char *filename)
+int	get_width(char *filename)
 {
-	int width;
-	int fd;
-	char *line;
-	char **buffer;
+	int		width;
+	int		fd;
+	char	*line;
+	char	**buffer;
 
 	fd = open_map(filename);
 	get_next_line(fd, &line);
@@ -57,10 +57,10 @@ int get_width(char *filename)
 	return (width);
 }
 
-void fill_line(char *line, int *map_line)
+void	fill_line(char *line, int *map_line)
 {
-	char **buffer;
-	int i;
+	char	**buffer;
+	int		i;
 
 	i = 0;
 	buffer = ft_split(line, ' ');
@@ -72,10 +72,10 @@ void fill_line(char *line, int *map_line)
 	dfree(buffer);
 }
 
-s_map parse_map(char *filename)
+s_map	parse_map(char *filename)
 {
-	s_map map;
-	int i;
+	s_map	map;
+	int		i;
 
 	i = 0;
 	map.width = get_width(filename);

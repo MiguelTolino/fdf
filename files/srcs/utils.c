@@ -3,20 +3,20 @@
 /*                                                        :::      ::::::::   */
 /*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mmateo-t <mmateo-t@student.42madrid>       +#+  +:+       +#+        */
+/*   By: mmateo-t <mmateo-t@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/19 19:56:33 by mmateo-t          #+#    #+#             */
-/*   Updated: 2021/10/21 10:28:39 by mmateo-t         ###   ########.fr       */
+/*   Updated: 2021/11/07 19:49:34 by mmateo-t         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 
-s_range range(fdf *data)
+s_range	range(fdf *data)
 {
-	int x;
-	int y;
-	s_range r;
+	int		x;
+	int		y;
+	s_range	r;
 
 	y = 0;
 	r.max = __INT_MAX__ * -1;
@@ -24,7 +24,7 @@ s_range range(fdf *data)
 	while (y < data->map.height)
 	{
 		x = 0;
- 		while (x < data->map.width)
+		while (x < data->map.width)
 		{
 			if (data->map.map[y][x] < r.min)
 				r.min = data->map.map[y][x];
@@ -37,7 +37,3 @@ s_range range(fdf *data)
 	r.range = abs(r.max - r.min);
 	return (r);
 }
-
-//TODO: ROTATE
-//FIXME: FIX ROTATION
-

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   display_image.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mmateo-t <mmateo-t@student.42madrid>       +#+  +:+       +#+        */
+/*   By: mmateo-t <mmateo-t@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/06 13:05:56 by mmateo-t          #+#    #+#             */
-/*   Updated: 2021/10/26 10:17:24 by mmateo-t         ###   ########.fr       */
+/*   Updated: 2021/11/07 19:20:02 by mmateo-t         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,8 @@
 
 unsigned int	set_color(int x, int y, s_map map, s_range r)
 {
-	int z;
-	float inc;
+	int		z;
+	float	inc;
 
 	z = map.map[y][x];
 	inc = (float)r.range / N_COLORS;
@@ -35,26 +35,27 @@ unsigned int	set_color(int x, int y, s_map map, s_range r)
 	return (0);
 }
 
-void my_mlx_pixel_put(fdf *data, int x, int y)
+void	my_mlx_pixel_put(fdf *data, int x, int y)
 {
-	char *dst;
+	char	*dst;
 
 	if (x >= SIZE_X || x < 0 || y >= SIZE_Y || y < 0)
-		return;
-	dst = data->mlx.img.data + (y * data->mlx.img.size_line + x * (data->mlx.img.bbp / 8));
+		return ;
+	dst = data->mlx.img.data + (y * data->mlx.img.size_line + x
+	* (data->mlx.img.bbp / 8));
 	*(unsigned int *)dst = data->mlx.color;
 }
 
-void display_img(fdf *data)
+void	display_img(fdf *data)
 {
-	int y;
-	int x;
+	int	y;
+	int	x;
 
 	y = 0;
 	while (y < data->map.height)
 	{
 		x = 0;
- 		while (x < data->map.width)
+		while (x < data->map.width)
 		{
 			data->mlx.color = set_color(x, y, data->map, data->map.range);
 			if (x < data->map.width - 1)
@@ -65,6 +66,7 @@ void display_img(fdf *data)
 		}
 		y++;
 	}
-	mlx_put_image_to_window(data->mlx.ptr, data->mlx.win, data->mlx.img.ptr, 0, 0);
+	mlx_put_image_to_window(data->mlx.ptr, data->mlx.win,
+		data->mlx.img.ptr, 0, 0);
 	put_controls(data->mlx);
 }

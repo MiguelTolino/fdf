@@ -3,22 +3,22 @@
 /*                                                        :::      ::::::::   */
 /*   bresenham.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mmateo-t <mmateo-t@student.42madrid>       +#+  +:+       +#+        */
+/*   By: mmateo-t <mmateo-t@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/08 10:18:43 by mmateo-t          #+#    #+#             */
-/*   Updated: 2021/10/21 13:53:28 by mmateo-t         ###   ########.fr       */
+/*   Updated: 2021/11/07 19:15:43 by mmateo-t         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "fdf.h"
+#include	"fdf.h"
 
-void plotlinelow(int x0, int y0, int x1, int y1, fdf *data)
+void	plotlinelow(int x0, int y0, int x1, int y1, fdf *data)
 {
-	int dx;
-	int dy;
-	int yi;
-	int d;
-	int y;
+	int	dx;
+	int	dy;
+	int	yi;
+	int	d;
+	int	y;
 
 	dx = x1 - x0;
 	dy = y1 - y0;
@@ -44,13 +44,13 @@ void plotlinelow(int x0, int y0, int x1, int y1, fdf *data)
 	}
 }
 
-void plotlinehigh(int x0, int y0, int x1, int y1, fdf *data)
+void	plotlinehigh(int x0, int y0, int x1, int y1, fdf *data)
 {
-	int dx;
-	int dy;
-	int xi;
-	int d;
-	int x;
+	int	dx;
+	int	dy;
+	int	xi;
+	int	d;
+	int	x;
 
 	dx = x1 - x0;
 	dy = y1 - y0;
@@ -76,24 +76,21 @@ void plotlinehigh(int x0, int y0, int x1, int y1, fdf *data)
 	}
 }
 
-void plotline(int x0, int y0, int x1, int y1, fdf *data)
+void	plotline(int x0, int y0, int x1, int y1, fdf *data)
 {
-	int z0;
-	int z1;
+	int	z0;
+	int	z1;
 
 	z0 = data->map.map[(int)y0][(int)x0];
 	z1 = data->map.map[(int)y1][(int)x1];
-
 	x0 *= data->cam.zoom;
 	y0 *= data->cam.zoom;
 	x1 *= data->cam.zoom;
 	y1 *= data->cam.zoom;
 	z0 *= data->cam.zoom / 2;
 	z1 *= data->cam.zoom / 2;
-
 	rotate(&x0, &y0, &z0, data);
 	rotate(&x1, &y1, &z1, data);
-
 	if (data->cam.isometric || data->cam.oblique)
 	{
 		iso(&x0, &y0, z0, data->cam.projection_angle);
@@ -103,7 +100,6 @@ void plotline(int x0, int y0, int x1, int y1, fdf *data)
 	y0 += data->cam.pos_y;
 	x1 += data->cam.pos_x;
 	y1 += data->cam.pos_y;
-
 	if (abs(y1 - y0) < abs(x1 - x0))
 	{
 		if (x0 > x1)

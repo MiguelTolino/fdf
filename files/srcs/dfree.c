@@ -3,21 +3,21 @@
 /*                                                        :::      ::::::::   */
 /*   dfree.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mmateo-t <mmateo-t@student.42madrid>       +#+  +:+       +#+        */
+/*   By: mmateo-t <mmateo-t@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/06 13:59:06 by mmateo-t          #+#    #+#             */
-/*   Updated: 2021/10/26 10:15:47 by mmateo-t         ###   ########.fr       */
+/*   Updated: 2021/11/07 19:16:28 by mmateo-t         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 
-int dfree(char **array)
+int	dfree(char **array)
 {
-	int i;
+	int	i;
 
 	if (!array)
-		return(-1);
+		return (-1);
 	i = 0;
 	while (array[i])
 	{

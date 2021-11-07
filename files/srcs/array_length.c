@@ -3,21 +3,21 @@
 /*                                                        :::      ::::::::   */
 /*   array_length.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mmateo-t <mmateo-t@student.42madrid>       +#+  +:+       +#+        */
+/*   By: mmateo-t <mmateo-t@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/06 10:53:23 by mmateo-t          #+#    #+#             */
-/*   Updated: 2021/10/17 18:30:12 by mmateo-t         ###   ########.fr       */
+/*   Updated: 2021/11/07 19:11:11 by mmateo-t         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int array_length(void **array)
+int	array_length(void **array)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	if (!array)
 		return (-1);
 	while (array[i])
 		i++;
-	return(i);
+	return (i);
 }
