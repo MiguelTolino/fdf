@@ -6,7 +6,7 @@
 #    By: mmateo-t <mmateo-t@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/06/24 16:04:19 by user42            #+#    #+#              #
-#    Updated: 2021/11/07 23:30:12 by mmateo-t         ###   ########.fr        #
+#    Updated: 2021/11/08 12:49:52 by mmateo-t         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,8 +18,11 @@
 #make fclean		#remove all binaries and executable
 
 SRCS_DIR:= files/srcs/
+BONUS_DIR:= files/srcs_bonus/
 SRCS := $(wildcard $(SRCS_DIR)*.c)
+SRCS_BONUS := $(wildcard $(BONUS_DIR)*.c)
 OBJS := $(SRCS:%.c=%.o)
+OBJS_BONUS := $(SRCS_BONUS:%.c=%.o)
 NAME:= fdf
 CC:= gcc
 CFLAGS:= -Wall -Werror -Wextra
@@ -45,6 +48,9 @@ $(%.o): $(%.c)
 		$(CC) -c $^ -o $@
 		@echo "Creating objects"
 
+bonus: libft $(OBJS_BONUS) msg
+	$(CC) $(CFLAGS) $(GNL) $(OBJS_BONUS) -o $(NAME) $(MINILIBX) $(LM) $(LIBFT_LIB)
+
 libft:
 		make -C $(LIBFT_PATH)
 
@@ -53,7 +59,7 @@ debug: $(OBJS)
 
 clean:
 		@echo "Removing objects"
-		$(RM) $(OBJS)
+		$(RM) $(OBJS) $(OBJS_BONUS)
 fclean:
 		make clean
 		cd files/lib/libft && $(MAKE) fclean
@@ -64,4 +70,4 @@ re:
 	make fclean all
 	@echo "All files has been deleted and recompiled"
 
-.PHONY: clean fclean all re objects debug bonus
+.PHONY: clean fclean all re objects debug bonus libft msg
