@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_memccpy.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mmateo-t <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: mmateo-t <mmateo-t@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/05 13:33:22 by mmateo-t          #+#    #+#             */
-/*   Updated: 2019/11/21 20:22:49 by mmateo-t         ###   ########.fr       */
+/*   Updated: 2021/11/08 16:43:17 by mmateo-t         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,8 @@ void	*ft_memccpy(void *dst, const void *src, int c, size_t n)
 	unsigned char	*ptr2;
 
 	i = 0;
-	ptr = (unsigned char*)src;
-	ptr2 = (unsigned char*)dst;
+	ptr = (unsigned char *)src;
+	ptr2 = (unsigned char *)dst;
 	while (i < n)
 	{
 		*ptr2 = *ptr;

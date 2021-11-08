@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   ft_split.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mmateo-t <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: mmateo-t <mmateo-t@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/08 16:59:33 by mmateo-t          #+#    #+#             */
-/*   Updated: 2019/11/28 14:30:21 by mmateo-t         ###   ########.fr       */
+/*   Updated: 2021/11/08 16:44:21 by mmateo-t         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static char		**ft_size(const char *s, char c)
+static char	**ft_size(const char *s, char c)
 {
 	char	*tmp;
 	char	**tab;
@@ -29,14 +29,14 @@ static char		**ft_size(const char *s, char c)
 		while (*tmp != c && *tmp)
 			tmp++;
 	}
-	tab = (char**)malloc(sizeof(char*) * (i + 1));
+	tab = (char **)malloc(sizeof(char *) * (i + 1));
 	if (tab == NULL)
 		return (NULL);
 	tab[i] = NULL;
 	return (tab);
 }
 
-static char		**ft_fill_tab(const char *s, char c)
+static char	**ft_fill_tab(const char *s, char c)
 {
 	size_t	len;
 	char	**tab;
@@ -64,7 +64,7 @@ static char		**ft_fill_tab(const char *s, char c)
 	return (tab);
 }
 
-char			**ft_split(char const *s, char c)
+char	**ft_split(char const *s, char c)
 {
 	char	**tab;
 

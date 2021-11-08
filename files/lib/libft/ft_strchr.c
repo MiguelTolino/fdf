@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strchr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mmateo-t <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: mmateo-t <mmateo-t@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/05 18:40:42 by mmateo-t          #+#    #+#             */
-/*   Updated: 2019/11/21 20:25:02 by mmateo-t         ###   ########.fr       */
+/*   Updated: 2021/11/08 16:40:35 by mmateo-t         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,13 +18,13 @@ char	*ft_strchr(const char *s, int c)
 	{
 		if (*s == c)
 		{
-			return ((char*)s);
+			return ((char *)s);
 		}
 		s++;
 	}
 	if (c == '\0')
 	{
-		return ((char*)s);
+		return ((char *)s);
 	}
 	return (NULL);
 }

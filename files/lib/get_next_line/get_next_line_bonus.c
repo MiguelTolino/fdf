@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line_bonus.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mmateo-t <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: mmateo-t <mmateo-t@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/02 13:46:30 by mmateo-t          #+#    #+#             */
-/*   Updated: 2021/10/05 18:16:14 by mmateo-t         ###   ########.fr       */
+/*   Updated: 2021/11/08 18:37:20 by mmateo-t         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line_bonus.h"
 
-int			new_line(char **s, char **line)
+int	new_line(char **s, char **line)
 {
 	int		len;
 	char	*aux;
@@ -37,11 +37,11 @@ int			new_line(char **s, char **line)
 	return (1);
 }
 
-int			return_value(int fd, int n_bytes, char **s, char **line)
+int	return_value(int fd, int n_bytes, char **s, char **line)
 {
 	if (n_bytes < 0)
 		return (-1);
-	else if (n_bytes == 0 && s[fd] == NULL)
+	else if (n_bytes == 0 && s[fd] == '\0')
 	{
 		*line = ft_strdup_gnl("");
 		return (0);
@@ -50,7 +50,7 @@ int			return_value(int fd, int n_bytes, char **s, char **line)
 		return (new_line(&s[fd], line));
 }
 
-int			get_next_line(int fd, char **line)
+int	get_next_line(int fd, char **line)
 {
 	char			buff[BUFFER_SIZE + 1];
 	int				n_bytes;
@@ -59,7 +59,8 @@ int			get_next_line(int fd, char **line)
 
 	if (fd < 0 || !line || BUFFER_SIZE < 1)
 		return (-1);
-	while ((n_bytes = read(fd, buff, BUFFER_SIZE)) > 0)
+	n_bytes = read(fd, buff, BUFFER_SIZE);
+	while (n_bytes > 0)
 	{
 		buff[n_bytes] = '\0';
 		if (s[fd] == NULL)
@@ -72,6 +73,7 @@ int			get_next_line(int fd, char **line)
 		}
 		if (ft_strchr_gnl(s[fd], '\n'))
 			break ;
+		n_bytes = read(fd, buff, BUFFER_SIZE);
 	}
 	return (return_value(fd, n_bytes, s, line));
 }

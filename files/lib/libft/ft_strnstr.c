@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strnstr.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mmateo-t <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: mmateo-t <mmateo-t@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/06 17:31:51 by mmateo-t          #+#    #+#             */
-/*   Updated: 2019/11/21 20:30:47 by mmateo-t         ###   ########.fr       */
+/*   Updated: 2021/11/08 16:36:44 by mmateo-t         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,8 @@ char	*ft_strnstr(const char *haystack, const char *needle, size_t len)
 	char	*big;
 	char	*little;
 
-	big = (char*)haystack;
-	little = (char*)needle;
+	big = (char *)haystack;
+	little = (char *)needle;
 	i = 0;
 	if (*little == '\0')
 		return (big);

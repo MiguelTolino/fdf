@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_lstmap_bonus.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mmateo-t <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: mmateo-t <mmateo-t@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/27 19:05:59 by mmateo-t          #+#    #+#             */
-/*   Updated: 2019/11/28 14:25:11 by mmateo-t         ###   ########.fr       */
+/*   Updated: 2021/11/08 16:38:49 by mmateo-t         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,8 @@ t_list	*ft_lstmap(t_list *lst, void *(*f)(void*), void (*del)(void*))
 		while (lst->next)
 		{
 			lst = lst->next;
-			if (!(new->next = ft_lstnew(f(lst->content))))
+			new->next = ft_lstnew(f(lst->content));
+			if (!new->next)
 			{
 				del(new->next);
 				free(new->next);
