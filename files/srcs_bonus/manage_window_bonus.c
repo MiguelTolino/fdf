@@ -6,7 +6,7 @@
 /*   By: mmateo-t <mmateo-t@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/06 12:40:56 by mmateo-t          #+#    #+#             */
-/*   Updated: 2021/11/08 12:43:09 by mmateo-t         ###   ########.fr       */
+/*   Updated: 2021/11/08 13:09:26 by mmateo-t         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,20 +56,18 @@ s_img	create_img(s_mlx mlx)
 
 	img.ptr = mlx_new_image(mlx.ptr, SIZE_X, SIZE_Y);
 	img.data = mlx_get_data_addr(img.ptr, &img.bbp, &img.size_line, &img.endian);
-	if (!(img.ptr) ||
-		!(img.data = mlx_get_data_addr(img.ptr, &img.bbp, &img.size_line, &img.endian)))
+	if (!(img.ptr) || !(img.data))
 		throw_error("Minilibx Error");
 	return (img);
 }
 
-s_mlx	create_window()
+s_mlx	create_window(void)
 {
 	s_mlx	mlx;
 
 	mlx.ptr = mlx_init();
 	mlx.win = mlx_new_window(mlx.ptr, SIZE_X, SIZE_Y, TITLE);
-	if (!(mlx.ptr) ||
-		!(mlx.win))
+	if (!(mlx.ptr) || !(mlx.win))
 		throw_error("Minilibx Error");
 	mlx.img = create_img(mlx);
 	return (mlx);

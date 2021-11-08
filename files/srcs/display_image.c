@@ -6,7 +6,7 @@
 /*   By: mmateo-t <mmateo-t@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/06 13:05:56 by mmateo-t          #+#    #+#             */
-/*   Updated: 2021/11/07 19:20:02 by mmateo-t         ###   ########.fr       */
+/*   Updated: 2021/11/08 12:58:04 by mmateo-t         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,8 +41,8 @@ void	my_mlx_pixel_put(fdf *data, int x, int y)
 
 	if (x >= SIZE_X || x < 0 || y >= SIZE_Y || y < 0)
 		return ;
-	dst = data->mlx.img.data + (y * data->mlx.img.size_line + x
-	* (data->mlx.img.bbp / 8));
+	dst = data->mlx.img.data + (y * data->mlx.img.size_line
+			+ x * (data->mlx.img.bbp / 8));
 	*(unsigned int *)dst = data->mlx.color;
 }
 

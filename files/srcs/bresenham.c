@@ -6,12 +6,14 @@
 /*   By: mmateo-t <mmateo-t@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/08 10:18:43 by mmateo-t          #+#    #+#             */
-/*   Updated: 2021/11/07 19:15:43 by mmateo-t         ###   ########.fr       */
+/*   Updated: 2021/11/08 12:56:57 by mmateo-t         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include	"fdf.h"
 
+/* void 	modify()
+ */
 void	plotlinelow(int x0, int y0, int x1, int y1, fdf *data)
 {
 	int	dx;

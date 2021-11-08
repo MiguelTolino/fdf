@@ -6,7 +6,7 @@
 /*   By: mmateo-t <mmateo-t@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/04 13:26:53 by mmateo-t          #+#    #+#             */
-/*   Updated: 2021/11/07 19:26:59 by mmateo-t         ###   ########.fr       */
+/*   Updated: 2021/11/08 13:02:58 by mmateo-t         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ int	main(int argc, char *argv[])
 {
 	fdf	*data;
 
-	data = (fdf*)malloc(sizeof(fdf));
+	data = (fdf *)malloc(sizeof(fdf));
 	check_errors(argc, argv);
 	data->map = parse_map(argv[1]);
 	data->cam = init_cam(data);
