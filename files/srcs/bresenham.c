@@ -6,15 +6,13 @@
 /*   By: mmateo-t <mmateo-t@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/08 10:18:43 by mmateo-t          #+#    #+#             */
-/*   Updated: 2021/11/08 12:56:57 by mmateo-t         ###   ########.fr       */
+/*   Updated: 2021/11/08 14:30:27 by mmateo-t         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include	"fdf.h"
 
-/* void 	modify()
- */
-void	plotlinelow(int x0, int y0, int x1, int y1, fdf *data)
+void	plotlinelow(int x0, int y0, int x1, int y1, t_fdf *data)
 {
 	int	dx;
 	int	dy;
@@ -46,7 +44,7 @@ void	plotlinelow(int x0, int y0, int x1, int y1, fdf *data)
 	}
 }
 
-void	plotlinehigh(int x0, int y0, int x1, int y1, fdf *data)
+void	plotlinehigh(int x0, int y0, int x1, int y1, t_fdf *data)
 {
 	int	dx;
 	int	dy;
@@ -78,7 +76,7 @@ void	plotlinehigh(int x0, int y0, int x1, int y1, fdf *data)
 	}
 }
 
-void	plotline(int x0, int y0, int x1, int y1, fdf *data)
+void	plotline(int x0, int y0, int x1, int y1, t_fdf *data)
 {
 	int	z0;
 	int	z1;
@@ -91,13 +89,8 @@ void	plotline(int x0, int y0, int x1, int y1, fdf *data)
 	y1 *= data->cam.zoom;
 	z0 *= data->cam.zoom / 2;
 	z1 *= data->cam.zoom / 2;
-	rotate(&x0, &y0, &z0, data);
-	rotate(&x1, &y1, &z1, data);
-	if (data->cam.isometric || data->cam.oblique)
-	{
-		iso(&x0, &y0, z0, data->cam.projection_angle);
-		iso(&x1, &y1, z1, data->cam.projection_angle);
-	}
+	iso(&x0, &y0, z0, data->cam.projection_angle);
+	iso(&x1, &y1, z1, data->cam.projection_angle);
 	x0 += data->cam.pos_x;
 	y0 += data->cam.pos_y;
 	x1 += data->cam.pos_x;

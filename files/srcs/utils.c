@@ -6,17 +6,17 @@
 /*   By: mmateo-t <mmateo-t@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/19 19:56:33 by mmateo-t          #+#    #+#             */
-/*   Updated: 2021/11/07 19:49:34 by mmateo-t         ###   ########.fr       */
+/*   Updated: 2021/11/08 14:34:47 by mmateo-t         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 
-s_range	range(fdf *data)
+t_range	range(t_fdf *data)
 {
 	int		x;
 	int		y;
-	s_range	r;
+	t_range	r;
 
 	y = 0;
 	r.max = __INT_MAX__ * -1;

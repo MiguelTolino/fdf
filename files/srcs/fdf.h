@@ -6,7 +6,7 @@
 /*   By: mmateo-t <mmateo-t@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/04 13:27:07 by mmateo-t          #+#    #+#             */
-/*   Updated: 2021/11/07 23:44:57 by mmateo-t         ###   ########.fr       */
+/*   Updated: 2021/11/08 14:33:24 by mmateo-t         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,8 +29,8 @@
 # define SIZE_Y 1200
 # define SIZE_CONTROL 200
 # define TITLE "FDF"
-# define ZOOM 20
-# define POSITION 300
+# define ZOOM 30
+# define POSITION 200
 # define SPEED_MOV 20
 
 # define RED 0xff0000
@@ -41,22 +41,21 @@
 # define PURPLE 0xff00ff
 # define AQUAMARINA 0x00ffff
 
-
 # ifdef __linux__
-# include "../includes/key_linux.h"
-# include "X11/X.h"
-#else
-# include "../includes/key_macos.h"
-#endif
+#  include "../includes/key_linux.h"
+#  include "X11/X.h"
+# else
+#  include "../includes/key_macos.h"
+# endif
 
-typedef struct s_range
+typedef struct t_range
 {
 	int	max;
 	int	min;
 	int	range;
-}	s_range;
+}	t_range;
 
-typedef struct s_cam
+typedef struct t_cam
 {
 	int		pos_x;
 	int		pos_y;
@@ -67,9 +66,9 @@ typedef struct s_cam
 	int		plane;
 	int		oblique;
 	int		rotate[3];
-}	s_cam;
+}	t_cam;
 
-typedef struct s_map
+typedef struct t_map
 {
 	int		**map;
 	char	**buffer;
@@ -77,55 +76,55 @@ typedef struct s_map
 	int		width;
 	int		height;
 	int		fd;
-	s_range	range;
-}	s_map;
+	t_range	range;
+}	t_map;
 
-typedef struct s_img
+typedef struct t_img
 {
 	void	*ptr;
 	int		bbp;
 	int		endian;
 	int		size_line;
 	char	*data;
-}	s_img;
+}	t_img;
 
-typedef struct s_mlx
+typedef struct t_mlx
 {
 	void			*ptr;
 	void			*win;
-	s_img			img;
+	t_img			img;
 	unsigned int	color;
 	int				z_temp;
 	int				z1_temp;
-}	s_mlx;
+}	t_mlx;
 
-typedef struct fdf
+typedef struct t_fdf
 {
-	s_map	map;
-	s_mlx	mlx;
-	s_cam	cam;
-}	fdf;
+	t_map	map;
+	t_mlx	mlx;
+	t_cam	cam;
+}	t_fdf;
 
 void	check_errors(int argc, char **argv);
-s_map	parse_map(char *filename);
+t_map	parse_map(char *filename);
 int		throw_error(char *error);
 int		ft_getnbr(char *str);
 int		dfree(char **array);
 int		array_length(char **array);
-s_mlx	create_window();
-void	display_img(fdf *data);
-void	hooks_loop(fdf *data);
-void	bresenham(float x0, float y0, float x1, float y1, fdf *data);
-int		free_map(s_map map);
-void	plotline(int x0, int y0, int x1, int y1, fdf *data);
-s_cam	init_cam(fdf *data);
-s_range	range(fdf *data);
-void	put_controls(s_mlx mlx);
-s_img	create_img(s_mlx mlx);
-void	my_mlx_pixel_put(fdf *data, int x, int y);
-void	new_image(fdf *data);
-void	end(s_mlx *mlx);
+t_mlx	create_window(void);
+void	display_img(t_fdf *data);
+void	hooks_loop(t_fdf *data);
+void	bresenham(float x0, float y0, float x1, float y1, t_fdf *data);
+int		free_map(t_map map);
+void	plotline(int x0, int y0, int x1, int y1, t_fdf *data);
+t_cam	init_cam(t_fdf *data);
+t_range	range(t_fdf *data);
+void	put_controls(t_mlx mlx);
+t_img	create_img(t_mlx mlx);
+void	my_mlx_pixel_put(t_fdf *data, int x, int y);
+void	new_image(t_fdf *data);
+void	end(t_mlx *mlx);
 void	iso(int *x, int *y, int z, double angle);
-void	rotate(int *x, int *y, int *z, fdf *data);
+void	rotate(int *x, int *y, int *z, t_fdf *data);
 
 #endif
