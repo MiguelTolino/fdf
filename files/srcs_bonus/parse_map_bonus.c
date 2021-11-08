@@ -6,7 +6,7 @@
 /*   By: mmateo-t <mmateo-t@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/05 17:25:14 by mmateo-t          #+#    #+#             */
-/*   Updated: 2021/11/08 12:43:09 by mmateo-t         ###   ########.fr       */
+/*   Updated: 2021/11/08 14:45:37 by mmateo-t         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,9 +72,9 @@ void	fill_line(char *line, int *map_line)
 	dfree(buffer);
 }
 
-s_map	parse_map(char *filename)
+t_map	parse_map(char *filename)
 {
-	s_map	map;
+	t_map	map;
 	int		i;
 
 	i = 0;

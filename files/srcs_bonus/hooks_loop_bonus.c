@@ -6,13 +6,13 @@
 /*   By: mmateo-t <mmateo-t@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/06 13:40:36 by mmateo-t          #+#    #+#             */
-/*   Updated: 2021/11/08 12:43:09 by mmateo-t         ###   ########.fr       */
+/*   Updated: 2021/11/08 14:43:54 by mmateo-t         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf_bonus.h"
 
-void	rotation(int keycode, fdf *data)
+void	rotation(int keycode, t_fdf *data)
 {
 	if (keycode == K_LEFT)
 		data->cam.rotate[0] = 1;
@@ -31,7 +31,7 @@ void	rotation(int keycode, fdf *data)
 		data->cam.angle += 0.1;
 }
 
-int	key_action(int keycode, fdf *data)
+int	key_action(int keycode, t_fdf *data)
 {
 	if (keycode == K_ESC)
 		end(&data->mlx);
@@ -68,13 +68,13 @@ int	key_action(int keycode, fdf *data)
 	return (0);
 }
 
-int	close_x(s_mlx *mlx)
+int	close_x(t_mlx *mlx)
 {
 	end(mlx);
 	return (0);
 }
 
-int	zoom(int button, int x, int y, fdf *data)
+int	zoom(int button, int x, int y, t_fdf *data)
 {
 	x++;
 	y++;
@@ -88,7 +88,7 @@ int	zoom(int button, int x, int y, fdf *data)
 	return (0);
 }
 
-void	hooks_loop(fdf *data)
+void	hooks_loop(t_fdf *data)
 {
 	mlx_key_hook(data->mlx.win, key_action, data);
 	mlx_hook(data->mlx.win, 17, (1L << 17), close_x, &data->mlx);

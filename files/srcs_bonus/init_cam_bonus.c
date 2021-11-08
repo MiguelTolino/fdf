@@ -6,7 +6,7 @@
 /*   By: mmateo-t <mmateo-t@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/19 19:39:16 by mmateo-t          #+#    #+#             */
-/*   Updated: 2021/11/08 12:43:09 by mmateo-t         ###   ########.fr       */
+/*   Updated: 2021/11/08 14:42:49 by mmateo-t         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,9 +24,9 @@ int	select_zoom(int size)
 		return (1);
 }
 
-s_cam	init_cam(fdf *data)
+t_cam	init_cam(t_fdf *data)
 {
-	s_cam	cam;
+	t_cam	cam;
 
 	data->map.range = range(data);
 	cam.angle = 0.1;

@@ -6,13 +6,13 @@
 /*   By: mmateo-t <mmateo-t@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/08 10:18:43 by mmateo-t          #+#    #+#             */
-/*   Updated: 2021/11/08 12:41:45 by mmateo-t         ###   ########.fr       */
+/*   Updated: 2021/11/08 14:40:43 by mmateo-t         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include	"fdf_bonus.h"
 
-void	plotlinelow(int x0, int y0, int x1, int y1, fdf *data)
+void	plotlinelow(int x0, int y0, int x1, int y1, t_fdf *data)
 {
 	int	dx;
 	int	dy;
@@ -44,7 +44,7 @@ void	plotlinelow(int x0, int y0, int x1, int y1, fdf *data)
 	}
 }
 
-void	plotlinehigh(int x0, int y0, int x1, int y1, fdf *data)
+void	plotlinehigh(int x0, int y0, int x1, int y1, t_fdf *data)
 {
 	int	dx;
 	int	dy;
@@ -76,7 +76,7 @@ void	plotlinehigh(int x0, int y0, int x1, int y1, fdf *data)
 	}
 }
 
-void	plotline(int x0, int y0, int x1, int y1, fdf *data)
+void	plotline(int x0, int y0, int x1, int y1, t_fdf *data)
 {
 	int	z0;
 	int	z1;

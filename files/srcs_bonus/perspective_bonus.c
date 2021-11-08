@@ -6,7 +6,7 @@
 /*   By: mmateo-t <mmateo-t@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/21 00:23:30 by mmateo-t          #+#    #+#             */
-/*   Updated: 2021/11/08 12:43:09 by mmateo-t         ###   ########.fr       */
+/*   Updated: 2021/11/08 14:40:43 by mmateo-t         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,7 @@ void	z_rotation(int *x, int *y, double angle)
 	*y = pre_x * sin(angle) + pre_y * cos(angle);
 }
 
-void	rotate(int *x, int *y, int *z, fdf *data)
+void	rotate(int *x, int *y, int *z, t_fdf *data)
 {
 	if (data->cam.rotate[0])
 		x_rotation(y, z, data->cam.angle);
