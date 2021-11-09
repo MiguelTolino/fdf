@@ -6,7 +6,7 @@
 /*   By: mmateo-t <mmateo-t@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/19 19:39:16 by mmateo-t          #+#    #+#             */
-/*   Updated: 2021/11/08 14:31:46 by mmateo-t         ###   ########.fr       */
+/*   Updated: 2021/11/09 10:32:42 by mmateo-t         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,22 @@ int	select_zoom(int size)
 		return (2);
 }
 
+int	position_y(int size)
+{
+	if (size > 300)
+		return (SIZE_Y / 5 - 100);
+	else if (size > 100)
+		return (SIZE_Y / 5);
+	return (SIZE_Y / 3 + 100);
+}
+
+int	position_x(int size)
+{
+	if (size > 150)
+		return (SIZE_X / 3 + 300);
+	return (SIZE_X / 3 + 100);
+}
+
 t_cam	init_cam(t_fdf *data)
 {
 	t_cam	cam;
@@ -34,9 +50,9 @@ t_cam	init_cam(t_fdf *data)
 	cam.isometric = 1;
 	cam.plane = 0;
 	cam.oblique = 0;
-	cam.zoom = select_zoom(data->map.width);
-	cam.pos_x = SIZE_X / 3 + 100;
-	cam.pos_y = SIZE_Y / 2;
+	cam.zoom = select_zoom(data->map.height);
+	cam.pos_x = position_x(data->map.height);
+	cam.pos_y = position_y(data->map.height);
 	cam.rotate[0] = 0;
 	cam.rotate[1] = 0;
 	cam.rotate[2] = 0;

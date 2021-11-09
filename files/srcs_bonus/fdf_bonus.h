@@ -6,7 +6,7 @@
 /*   By: mmateo-t <mmateo-t@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/04 13:27:07 by mmateo-t          #+#    #+#             */
-/*   Updated: 2021/11/08 14:51:38 by mmateo-t         ###   ########.fr       */
+/*   Updated: 2021/11/09 11:11:01 by mmateo-t         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,30 @@
 # else
 #  include "../includes/key_macos.h"
 # endif
+
+typedef struct t_lowvars
+{
+	int	dx;
+	int	dy;
+	int	yi;
+	int	d;
+	int	y;
+}	t_lowvars;
+
+typedef struct t_highvars
+{
+	int	dx;
+	int	dy;
+	int	xi;
+	int	d;
+	int	x;
+}	t_highvars;
+
+typedef struct t_point
+{
+	int	x;
+	int	y;
+}	t_point;
 
 typedef struct t_range
 {
@@ -114,9 +138,9 @@ int		array_length(char **array);
 t_mlx	create_window(void);
 void	display_img(t_fdf *data);
 void	hooks_loop(t_fdf *data);
-void	bresenham(float x0, float y0, float x1, float y1, t_fdf *data);
+void	bresenham(t_point p0, float x1, float y1, t_fdf *data);
 int		free_map(t_map map);
-void	plotline(int x0, int y0, int x1, int y1, t_fdf *data);
+void	plotline(t_point p0, int x1, int y1, t_fdf *data);
 t_cam	init_cam(t_fdf *data);
 t_range	range(t_fdf *data);
 void	put_controls(t_mlx mlx);
@@ -126,5 +150,8 @@ void	new_image(t_fdf *data);
 void	end(t_mlx *mlx);
 void	iso(int *x, int *y, int z, double angle);
 void	rotate(int *x, int *y, int *z, t_fdf *data);
+void	perform_zoom(t_point *p0, t_point *p1, int z[2], t_fdf *data);
+void	perform_position(t_point *p0, t_point *p1, t_fdf *data);
+void	hooks_perspective(t_fdf *data, int keycode);
 
 #endif

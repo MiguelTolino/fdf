@@ -6,107 +6,93 @@
 /*   By: mmateo-t <mmateo-t@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/08 10:18:43 by mmateo-t          #+#    #+#             */
-/*   Updated: 2021/11/08 14:30:27 by mmateo-t         ###   ########.fr       */
+/*   Updated: 2021/11/09 10:03:08 by mmateo-t         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include	"fdf.h"
 
-void	plotlinelow(int x0, int y0, int x1, int y1, t_fdf *data)
+void	plotlinelow(t_point p0, t_point p1, t_fdf *data)
 {
-	int	dx;
-	int	dy;
-	int	yi;
-	int	d;
-	int	y;
+	t_lowvars	v;
 
-	dx = x1 - x0;
-	dy = y1 - y0;
-	yi = 1;
-	if (dy < 0)
+	v.dx = p1.x - p0.x;
+	v.dy = p1.y - p0.y;
+	v.yi = 1;
+	if (v.dy < 0)
 	{
-		yi = -1;
-		dy = -dy;
+		v.yi = -1;
+		v.dy = -v.dy;
 	}
-	d = (2 * dy) - dx;
-	y = y0;
-	while (x0 < x1)
+	v.d = (2 * v.dy) - v.dx;
+	v.y = p0.y;
+	while (p0.x < p1.x)
 	{
-		my_mlx_pixel_put(data, x0, y);
-		if (d > 0)
+		my_mlx_pixel_put(data, p0.x, v.y);
+		if (v.d > 0)
 		{
-			y = y + yi;
-			d = d + (2 * (dy - dx));
+			v.y = v.y + v.yi;
+			v.d = v.d + (2 * (v.dy - v.dx));
 		}
 		else
-			d = d + 2 * dy;
-		x0++;
+			v.d = v.d + 2 * v.dy;
+		p0.x++;
 	}
 }
 
-void	plotlinehigh(int x0, int y0, int x1, int y1, t_fdf *data)
+void	plotlinehigh(t_point p0, t_point p1, t_fdf *data)
 {
-	int	dx;
-	int	dy;
-	int	xi;
-	int	d;
-	int	x;
+	t_highvars	v;
 
-	dx = x1 - x0;
-	dy = y1 - y0;
-	xi = 1;
-	if (dx < 0)
+	v.dx = p1.x - p0.x;
+	v.dy = p1.y - p0.y;
+	v.xi = 1;
+	if (v.dx < 0)
 	{
-		xi = -1;
-		dx = -dx;
+		v.xi = -1;
+		v.dx = -v.dx;
 	}
-	d = (2 * dx) - dy;
-	x = x0;
-	while (y0 < y1)
+	v.d = (2 * v.dx) - v.dy;
+	v.x = p0.x;
+	while (p0.y < p1.y)
 	{
-		my_mlx_pixel_put(data, x, y0);
-		if (d > 0)
+		my_mlx_pixel_put(data, v.x, p0.y);
+		if (v.d > 0)
 		{
-			x = x + xi;
-			d = d + (2 * (dx - dy));
+			v.x = v.x + v.xi;
+			v.d = v.d + (2 * (v.dx - v.dy));
 		}
 		else
-			d = d + 2 * dx;
-		y0++;
+			v.d = v.d + 2 * v.dx;
+		p0.y++;
 	}
 }
 
-void	plotline(int x0, int y0, int x1, int y1, t_fdf *data)
+void	plotline(t_point p0, int x1, int y1, t_fdf *data)
 {
-	int	z0;
-	int	z1;
+	int		z[2];
+	t_point	p1;
 
-	z0 = data->map.map[(int)y0][(int)x0];
-	z1 = data->map.map[(int)y1][(int)x1];
-	x0 *= data->cam.zoom;
-	y0 *= data->cam.zoom;
-	x1 *= data->cam.zoom;
-	y1 *= data->cam.zoom;
-	z0 *= data->cam.zoom / 2;
-	z1 *= data->cam.zoom / 2;
-	iso(&x0, &y0, z0, data->cam.projection_angle);
-	iso(&x1, &y1, z1, data->cam.projection_angle);
-	x0 += data->cam.pos_x;
-	y0 += data->cam.pos_y;
-	x1 += data->cam.pos_x;
-	y1 += data->cam.pos_y;
-	if (abs(y1 - y0) < abs(x1 - x0))
+	p1.x = x1;
+	p1.y = y1;
+	z[0] = data->map.map[(int)p0.y][(int)p0.x];
+	z[1] = data->map.map[(int)p1.y][(int)p1.x];
+	perform_zoom(&p0, &p1, z, data);
+	iso(&p0.x, &p0.y, z[0], data->cam.projection_angle);
+	iso(&p1.x, &p1.y, z[1], data->cam.projection_angle);
+	perform_position(&p0, &p1, data);
+	if (abs(p1.y - p0.y) < abs(p1.x - p0.x))
 	{
-		if (x0 > x1)
-			plotlinelow(x1, y1, x0, y0, data);
+		if (p0.x > p1.x)
+			plotlinelow(p1, p0, data);
 		else
-			plotlinelow(x0, y0, x1, y1, data);
+			plotlinelow(p0, p1, data);
 	}
 	else
 	{
-		if (y0 > y1)
-			plotlinehigh(x1, y1, x0, y0, data);
+		if (p0.y > p1.y)
+			plotlinehigh(p1, p0, data);
 		else
-			plotlinehigh(x0, y0, x1, y1, data);
+			plotlinehigh(p0, p1, data);
 	}
 }

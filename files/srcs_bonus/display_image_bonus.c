@@ -6,7 +6,7 @@
 /*   By: mmateo-t <mmateo-t@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/06 13:05:56 by mmateo-t          #+#    #+#             */
-/*   Updated: 2021/11/08 14:44:16 by mmateo-t         ###   ########.fr       */
+/*   Updated: 2021/11/09 10:54:21 by mmateo-t         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,23 +48,22 @@ void	my_mlx_pixel_put(t_fdf *data, int x, int y)
 
 void	display_img(t_fdf *data)
 {
-	int	y;
-	int	x;
+	t_point	p;
 
-	y = 0;
-	while (y < data->map.height)
+	p.y = 0;
+	while (p.y < data->map.height)
 	{
-		x = 0;
-		while (x < data->map.width)
+		p.x = 0;
+		while (p.x < data->map.width)
 		{
-			data->mlx.color = set_color(x, y, data->map, data->map.range);
-			if (x < data->map.width - 1)
-				plotline(x, y, x + 1, y, data);
-			if (y < data->map.height - 1)
-				plotline(x, y, x, y + 1, data);
-			x++;
+			data->mlx.color = set_color(p.x, p.y, data->map, data->map.range);
+			if (p.x < data->map.width - 1)
+				plotline(p, p.x + 1, p.y, data);
+			if (p.y < data->map.height - 1)
+				plotline(p, p.x, p.y + 1, data);
+			p.x++;
 		}
-		y++;
+		p.y++;
 	}
 	mlx_put_image_to_window(data->mlx.ptr, data->mlx.win,
 		data->mlx.img.ptr, 0, 0);

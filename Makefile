@@ -6,7 +6,7 @@
 #    By: mmateo-t <mmateo-t@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/06/24 16:04:19 by user42            #+#    #+#              #
-#    Updated: 2021/11/08 12:49:52 by mmateo-t         ###   ########.fr        #
+#    Updated: 2021/11/09 09:46:38 by mmateo-t         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -44,12 +44,12 @@ all:	libft $(NAME) msg
 $(NAME): $(OBJS)
 	$(CC) $(CFLAGS) $(GNL) $(OBJS) -o $(NAME) $(MINILIBX) $(LM) $(LIBFT_LIB)
 
+bonus: libft $(OBJS_BONUS) msg
+	$(CC) $(CFLAGS) $(GNL) $(OBJS_BONUS) -o $(NAME) $(MINILIBX) $(LM) $(LIBFT_LIB)
+	
 $(%.o): $(%.c)
 		$(CC) -c $^ -o $@
 		@echo "Creating objects"
-
-bonus: libft $(OBJS_BONUS) msg
-	$(CC) $(CFLAGS) $(GNL) $(OBJS_BONUS) -o $(NAME) $(MINILIBX) $(LM) $(LIBFT_LIB)
 
 libft:
 		make -C $(LIBFT_PATH)

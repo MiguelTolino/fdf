@@ -6,7 +6,7 @@
 /*   By: mmateo-t <mmateo-t@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/06 13:40:36 by mmateo-t          #+#    #+#             */
-/*   Updated: 2021/11/08 14:43:54 by mmateo-t         ###   ########.fr       */
+/*   Updated: 2021/11/09 11:12:17 by mmateo-t         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,26 +43,7 @@ int	key_action(int keycode, t_fdf *data)
 		data->cam.pos_x += SPEED_MOV;
 	if (keycode == K_S)
 		data->cam.pos_y += SPEED_MOV;
-	if (keycode == K_I)
-	{
-		data->cam.isometric = 1;
-		data->cam.plane = 0;
-		data->cam.oblique = 0;
-		data->cam.projection_angle = ANGLE2;
-	}
-	if (keycode == K_P)
-	{
-		data->cam.plane = 1;
-		data->cam.isometric = 0;
-		data->cam.oblique = 0;
-	}
-	if (keycode == K_O)
-	{
-		data->cam.plane = 0;
-		data->cam.isometric = 0;
-		data->cam.oblique = 1;
-		data->cam.projection_angle = ANGLE1;
-	}
+	hooks_perspective(data, keycode);
 	rotation(keycode, data);
 	new_image(data);
 	return (0);
