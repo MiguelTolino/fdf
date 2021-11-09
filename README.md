@@ -14,7 +14,7 @@ a parameter to your program.
 - GCC
 - X11
 ## 👌 Usage
-1. Compile the project  `make`
+1. Compile the project  `make` || `make bonus`
 2. `./fdf test_maps/example.fdf`
 ## ⌨️ Controls 
 ### 🏃 Movement
