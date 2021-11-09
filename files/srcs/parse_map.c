@@ -6,7 +6,7 @@
 /*   By: mmateo-t <mmateo-t@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/05 17:25:14 by mmateo-t          #+#    #+#             */
-/*   Updated: 2021/11/08 14:34:15 by mmateo-t         ###   ########.fr       */
+/*   Updated: 2021/11/09 17:42:24 by mmateo-t         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,39 +22,27 @@ int	open_map(char *map_name)
 	return (fd);
 }
 
-int	get_height(char *filename)
+int	*get_wh(char *filename)
 {
-	int		height;
-	int		fd;
-	char	*line;
-
-	height = 0;
-	fd = open_map(filename);
-	while (get_next_line(fd, &line))
-	{
-		height++;
-		free(line);
-	}
-	close(fd);
-	free(line);
-	return (height);
-}
-
-int	get_width(char *filename)
-{
-	int		width;
+	int		*wh;
 	int		fd;
 	char	*line;
 	char	**buffer;
 
+	wh = malloc(sizeof(int) * 2);
+	wh[1] = 0;
 	fd = open_map(filename);
-	get_next_line(fd, &line);
-	buffer = ft_split(line, ' ');
-	width = array_length(buffer);
+	while (get_next_line(fd, &line))
+	{
+		buffer = ft_split(line, ' ');
+		wh[0] = array_length(buffer);
+		wh[1]++;
+		free(line);
+		dfree(buffer);
+	}
 	free(line);
-	dfree(buffer);
 	close(fd);
-	return (width);
+	return (m);
 }
 
 void	fill_line(char *line, int *map_line)
@@ -76,10 +64,13 @@ t_map	parse_map(char *filename)
 {
 	t_map	map;
 	int		i;
+	int		*wh;
 
 	i = 0;
-	map.width = get_width(filename);
-	map.height = get_height(filename);
+	wh = get_wh(filename);
+	map.width = wh[0];
+	map.height = wh[1];
+	free(m);
 	map.fd = open_map(filename);
 	map.map = (int **)malloc(sizeof(int *) * map.height);
 	while (i < map.height)

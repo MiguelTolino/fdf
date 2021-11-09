@@ -6,7 +6,7 @@
 /*   By: mmateo-t <mmateo-t@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/04 13:27:07 by mmateo-t          #+#    #+#             */
-/*   Updated: 2021/11/09 10:01:32 by mmateo-t         ###   ########.fr       */
+/*   Updated: 2021/11/09 17:42:38 by mmateo-t         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -152,5 +152,6 @@ void	iso(int *x, int *y, int z, double angle);
 void	rotate(int *x, int *y, int *z, t_fdf *data);
 void	perform_zoom(t_point *p0, t_point *p1, int z[], t_fdf *data);
 void	perform_position(t_point *p0, t_point *p1, t_fdf *data);
+void	test(t_fdf data);
 
 #endif
