@@ -6,7 +6,7 @@
 /*   By: mmateo-t <mmateo-t@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/05 17:25:14 by mmateo-t          #+#    #+#             */
-/*   Updated: 2021/11/09 17:42:24 by mmateo-t         ###   ########.fr       */
+/*   Updated: 2021/11/09 17:56:23 by mmateo-t         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ int	*get_wh(char *filename)
 	}
 	free(line);
 	close(fd);
-	return (m);
+	return (wh);
 }
 
 void	fill_line(char *line, int *map_line)
@@ -70,7 +70,7 @@ t_map	parse_map(char *filename)
 	wh = get_wh(filename);
 	map.width = wh[0];
 	map.height = wh[1];
-	free(m);
+	free(wh);
 	map.fd = open_map(filename);
 	map.map = (int **)malloc(sizeof(int *) * map.height);
 	while (i < map.height)
